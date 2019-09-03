@@ -1,0 +1,17 @@
+.has-error input[type="email"],
+.has-error input[type="password"] {
+    border-color: rgb(216, 12, 12);
+    color: rgb(230, 14, 14);
+}
+
+body {				font-family: Arial;				font-size: 12px;}			.panel-heading {				height: 57px !important;				background: #3c8dbc !important;				color: white !important;				display: block;				margin: auto;				text-align: center;				float: inherit !important;			}			.panel-heading .panel-title {				text-align: center;				float: inherit !important;				font-size: 20px;			}			.fb-inline-field-container {				padding-right: 0 !important;			}		
+.login-avatar {
+    width: 35px;
+    height: 28px;
+    padding: 6px 12px;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-right: 0;
+}

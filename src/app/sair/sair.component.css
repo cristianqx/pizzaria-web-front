@@ -1,0 +1,21 @@
+body {
+    font-family: Arial;
+    font-size: 12px;
+}			
+.panel-heading {
+    height: 57px !important;
+    background: #3c8dbc !important;
+    color: white !important;
+    display: block;
+    margin: auto;
+    text-align: center;
+    float: inherit !important;
+}			
+.panel-heading .panel-title {
+    text-align: center;
+    float: inherit !important;
+    font-size: 20px;
+}
+.fb-inline-field-container {
+    padding-right: 0 !important;
+}	

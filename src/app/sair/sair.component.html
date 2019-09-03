@@ -1,0 +1,41 @@
+<body class="">
+  
+  <nav class="main-header navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; text-align: center">
+    <div class="navbar-header" style="display: inline-block; float: none">
+      <a class="navbar-brand" style="color: black" href="#">
+         Portal Web - Sender
+      </a>
+    </div>
+  </nav>
+
+  <div id="wrapper2" style="width: 90%; margin: auto; margin-top: 10px">
+    <div id="div_content">
+      <div style="clear: both">
+        <div style="margin: auto; margin-top: 100px; max-width: 460px;" id="login-wrapper">
+          <div class="panel panel-default" style="width: 100%" widget="bootstrapformbuilder" form="form_login">
+            
+            <div class="panel-heading" style="width: 100%; height: 43px; padding: 5px;">
+              <div class="panel-title" style="padding: 5px; float: left">
+                  Tem certeza que deseja sair do sistema ?
+              </div>            
+            </div>
+
+            <div class="panel-body" style="width: 100%">
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" style="padding: 10px; margin-top: -1px;" id="tab_bform_1853864126_0">
+                  <div class="form-group tformrow ">
+                      <button (click)="naoSair()" class="btn btn-default">Não</button>
+                      &nbsp; 
+                      <button (click)="sair()" class="btn btn-success">Sim</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>

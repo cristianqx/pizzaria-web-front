@@ -1,0 +1,57 @@
+<body class="">
+  
+    <nav class="main-header navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; text-align: center">
+      <div class="navbar-header" style="display: inline-block; float: none">
+        <a class="navbar-brand" style="color: black" href="#">
+           Portal Web - Sender
+        </a>
+      </div>
+    </nav>
+    
+    <div id="wrapper2" style="width: 90%; margin: auto; margin-top: 10px">
+      <div id="div_content">
+        <div style="clear: both">
+          <div style="margin: auto; margin-top: 100px; max-width: 460px;" id="login-wrapper">
+            <div class="panel panel-default" style="width: 100%" widget="bootstrapformbuilder" form="form_login">
+              <div class="panel-heading" style="width: 100%; height: 43px; padding: 5px;">
+                <div class="panel-title" style="padding: 5px; float: left">
+                  Digite seu e-mail
+                </div>            
+              </div>
+            
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" enctype="application/x-www-form-urlencoded" class="form-horizontal" type="bootstrap" name="form_login" id="form_login">
+    
+                <div class="panel-body" style="width: 100%">
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" style="padding: 10px; margin-top: -1px;" id="tab_bform_1853864126_0">
+                      <div class="form-group tformrow ">
+                        <div class="col-sm-12 fb-field-container " style="min-height: 26px">
+                          <div class="fb-inline-field-container " style="display: inline-block; vertical-align: top; float: left; padding-right: 10px;">
+                            <span style="float: left; margin-left: 44px; height: 35px;" class="login-avatar">
+                              <span class="glyphicon glyphicon-user"></span>
+                            </span>
+                          </div>
+                          <div class="fb-inline-field-container form-line" style="display: inline-block; vertical-align: top; float: left; width: 70%">
+                            <input type="text" class="form-control tfield" formControlName="email" [ngClass]="{ 'is-invalid': formControls.email.errors }" placeholder="Email" autofocus
+                                   widget="tentry" style="height: 35px; font-size: 14px; float: left; border-bottom-left-radius: 0; border-top-left-radius: 0;; width: 100%;">
+                            <div *ngIf="formControls.email.errors" class="invalid-feedback">
+                                <div *ngIf="formControls.email.errors.required">Por favor informe o email</div>
+                                <div *ngIf="formControls.email.errors.email">Informe um email válido</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-footer" style="width: 100%">
+                  <input type="submit" value="Enviar" d="tbutton_btn_entrar" name="btn_entrar" class="btn btn-primary"
+                         style="height: 40px; width: 90%; display: block; margin: auto; font-size: 17px;"/>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>

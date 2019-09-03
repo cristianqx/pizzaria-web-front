@@ -1,0 +1,38 @@
+<div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+      
+      <li mk-dropdown type="list" [isWrapper]="false" class="user user-menu">
+        <mk-dropdown-toggle>
+          <a #toggleElement>
+            <img src="{{usuarioLogado.urlFoto}}" class="user-image" alt="User Image"
+            onerror="if(this.src != 'assets/img/semavatar.png'){ this.src = 'assets/img/semavatar.png';}">
+  
+            <span class="hidden-xs">{{usuarioLogado.nome}}</span>
+            
+  
+          </a>
+        </mk-dropdown-toggle>
+        <mk-dropdown-menu>
+          <li class="user-header">
+            <img src="{{usuarioLogado.urlFoto}}" class="img-circle" alt="User Image"
+            onerror="if(this.src != 'assets/img/semavatar.png'){ this.src = 'assets/img/semavatar.png';}">
+  
+            <p>
+              {{usuarioLogado.nome}} <br/>
+              <small>{{usuarioLogado.descrica_funcao}}</small>
+            </p>
+          </li>
+          
+          <li class="user-footer">
+            <div class="pull-left">
+              <a href="#" class="btn btn-default btn-flat">Meus Dados</a>
+            </div>
+            <div class="pull-right">
+              <button (click)="logout()" class="btn btn-default btn-flat">Sair</button>
+            </div>
+          </li>
+        </mk-dropdown-menu>
+      </li>
+    </ul>
+  </div>
+  
