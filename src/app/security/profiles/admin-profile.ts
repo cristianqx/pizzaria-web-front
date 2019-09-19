@@ -11,7 +11,6 @@ export const ADMIN_PROFILE_MENU = {
           {label: 'Usuários', route: 'cadastros/usuarios', iconClasses: 'fa fa-users'}
         ]
       },
-      {label: 'Relatórios', route: 'dropdown', iconClasses: 'fa fa-line-chart'},
     ]
   };
   
