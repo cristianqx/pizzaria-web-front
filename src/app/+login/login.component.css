@@ -1,9 +1,17 @@
+css
+
+
 .has-error input[type="email"],
 .has-error input[type="password"] {
     border-color: rgb(216, 12, 12);
     color: rgb(230, 14, 14);
 }
 
+
+.pizza-icon {
+    position: relative;
+    left: 42%;
+}
 body {
     font-family: Arial;
     font-size: 12px;

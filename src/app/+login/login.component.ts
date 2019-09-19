@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
     this.isSubmited = false;
 
     if(error.status == 404){
-      alert('Email não cadastrado!');
+      alert('Login não cadastrado!');
       return;
     
     } else if(error.status == 401){

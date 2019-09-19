@@ -7,8 +7,8 @@ export const ADMIN_PROFILE_MENU = {
       {label: 'Financeiro', route: 'financeiro', iconClasses: 'fa fa-money'},
       {label: 'Cadastros', iconClasses: 'fa fa-pencil-square-o',
         children: [
-          {label: 'Usuários', route: 'cadastros/usuarios', iconClasses: 'fa fa-users'},
-          {label: 'Produtos', route: 'cadastros/produtos', iconClasses: 'fa fa-cutlery'}
+          {label: 'Produtos', route: 'cadastros/produtos', iconClasses: 'fa fa-cutlery'},
+          {label: 'Usuários', route: 'cadastros/usuarios', iconClasses: 'fa fa-users'}
         ]
       },
       {label: 'Relatórios', route: 'dropdown', iconClasses: 'fa fa-line-chart'},

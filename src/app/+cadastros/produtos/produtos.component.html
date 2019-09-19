@@ -1,0 +1,93 @@
+<mk-box header="Cadastro e listagem de produtos" [isCollapsable]="false" [isRemovable]="false">
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <!-- /.box-header -->
+          <div class="box-body">
+            <br />
+            <div>
+              <tr>
+                <td>
+                  <a routerLink="/cadastros/usuario" class="btn btn-block btn-primary" role="button">+ Cadastrar
+                    Produtos</a>
+                </td>
+              </tr>
+            </div>
+            <br />
+            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6"></div>
+              </div>
+              <div class="panel panel-primary">
+                <div class="panel-heading">Últimos pedidos</div>
+                <div class="panel-body">
+                  <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                    aria-describedby="example2_info">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Browser: activate to sort column ascending" class="padrao-texto-titulo">ID do Produto</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending" class="padrao-texto-titulo">Nome</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Preço</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Editar</th>
+                    </thead>
+                    <tbody>
+
+                      <tr role="row" class="odd">
+                        <td class="padrao-fonte-texto">01</td>
+                        <td class="padrao-fonte-texto">Pizza Camarão</td>
+                        <td class="padrao-fonte-texto">R$ 65,00</td>
+                        <td>
+                            <button (click)="editarAeroporto(aeroporto.id)">
+                                <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
+                              </button>
+                        </td>
+                      </tr>
+                      <tr role="row" class="odd">
+                        <td class="padrao-fonte-texto">02</td>
+                        <td class="padrao-fonte-texto">Pizza Mussarela</td>
+                        <td class="padrao-fonte-texto">R$ 25,00</td>
+                        <td>
+                            <button (click)="editarAeroporto(aeroporto.id)">
+                                <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
+                              </button>
+                        </td>
+                      </tr>
+                      <tr role="row" class="odd">
+                        <td class="padrao-fonte-texto">03</td>
+                        <td class="padrao-fonte-texto">Pizza 4 Queijos</td>
+                        <td class="padrao-fonte-texto">R$ 60,00</td>
+                        <td>
+                            <button (click)="editarAeroporto(aeroporto.id)">
+                                <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
+                              </button>
+                        </td>
+                      </tr>
+                      <tr role="row" class="odd">
+                        <td class="padrao-fonte-texto">04</td>
+                        <td class="padrao-fonte-texto">Pizza Catupiry</td>
+                        <td class="padrao-fonte-texto">R$ 20,00</td>
+                        <td>
+                          <button (click)="editarAeroporto(aeroporto.id)">
+                            <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+    </div>
+  </section>
+</mk-box>

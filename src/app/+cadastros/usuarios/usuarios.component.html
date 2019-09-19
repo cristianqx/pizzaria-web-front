@@ -1,3 +1,65 @@
-<mk-box header="Cadastro e listagem de usuários" [isCollapsable]="false" [isRemovable]="false">
-  Implementar
-</mk-box>
+<mk-box header="Listagem de Usuários Cadastrados" aria-hidden="true" [isCollapsable]="false" [isRemovable]="false">
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <br />
+              <div>
+                <tr>
+                  <td>
+                    <a routerLink="/cadastros/usuario" class="btn btn-block btn-primary" role="button">+ Novo Usuário</a>
+                  </td>
+                </tr>
+              </div>
+              <br />
+              <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                  <div class="col-sm-6"></div>
+                  <div class="col-sm-6"></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="table-reponsive">
+                      <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                        aria-describedby="example2_info">
+                        <thead>
+                          <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                              aria-label="Browser: activate to sort column ascending">Login</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                              aria-label="Platform(s): activate to sort column ascending">Nome</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                              aria-label="Engine version: activate to sort column ascending">Email</th>
+                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                              aria-label="Engine version: activate to sort column ascending">Função</th>
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                              aria-label="Engine version: activate to sort column ascending">Editar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr role="row" class="odd">
+                            <td>adm</td>
+                            <td>Administrador</td>
+                            <td>adm@pizzaria.com</td>
+                            <td>Perfil Administrador</td>
+                            <td>
+                                <button (click)="editarAeroporto(aeroporto.id)">
+                                    <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
+                                  </button>
+                          </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </mk-box>

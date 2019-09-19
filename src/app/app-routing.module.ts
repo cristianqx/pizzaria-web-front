@@ -14,6 +14,8 @@ const routes: Routes = [
         children: [
           {path: 'usuarios',loadChildren: './+cadastros/usuarios/usuarios.module#UsuariosModule',data: {
             title: 'Usuários'}},
+            {path: 'produtos',loadChildren: './+cadastros/produtos/produtos.module#ProdutosModule',data: {
+              title: 'Produtos'}},
         ]
       },   
 
