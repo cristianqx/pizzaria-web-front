@@ -1,3 +1,5 @@
+import { PerfilResource } from "./perfil-resource";
+
 /**
  * Resource que representa os dados do usuario logado.
  * @author Cristian Baptistella
@@ -10,7 +12,9 @@ export class UsuarioResource {
     sexo : string;
     data_cadastro : Date;
     email : string;
-    obs: string;
-    funcao_id : number;
-    descrica_funcao : string;
+    perfil : PerfilResource;
+
+    constructor(){
+        this.perfil = new PerfilResource();
+    }
 }

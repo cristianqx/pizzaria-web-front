@@ -1,93 +1,70 @@
-<mk-box header="Cadastro e listagem de produtos" [isCollapsable]="false" [isRemovable]="false">
-  <section class="content">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="box">
-          <!-- /.box-header -->
-          <div class="box-body">
-            <br />
-            <div>
-              <tr>
-                <td>
-                  <a routerLink="/cadastros/cad-produtos" class="btn btn-block btn-primary" role="button">+ Cadastrar
-                    Produtos</a>
-                </td>
-              </tr>
+<mk-box header="Cadastro de Usuário" [isCollapsable]="false" [isRemovable]="false">
+    <section class="content">
+  
+      <form role="form">
+  
+        <div class="box-body">
+  
+          <div class="row">
+  
+  
+            <div class="col-lg-6">
+  
+              <label for="InputEmail1">E-mail</label>
+              <input type="email" class="form-control"
+                [ngClass]="{ 'is-invalid': isSubmited && formControls.email.errors }" placeholder="Email" autofocus>
             </div>
-            <br />
-            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-              <div class="row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-6"></div>
-              </div>
-              <div class="panel panel-primary">
-                <div class="panel-heading">Últimos pedidos</div>
-                <div class="panel-body">
-                  <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
-                    aria-describedby="example2_info">
-                    <thead>
-                      <tr role="row">
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Browser: activate to sort column ascending" class="padrao-texto-titulo">ID do Produto</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending" class="padrao-texto-titulo">Nome</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Preço</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Editar</th>
-                    </thead>
-                    <tbody>
-
-                      <tr role="row" class="odd">
-                        <td class="padrao-fonte-texto">01</td>
-                        <td class="padrao-fonte-texto">Pizza Camarão</td>
-                        <td class="padrao-fonte-texto">R$ 65,00</td>
-                        <td>
-                            <button (click)="editarAeroporto(aeroporto.id)">
-                                <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
-                              </button>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="padrao-fonte-texto">02</td>
-                        <td class="padrao-fonte-texto">Pizza Mussarela</td>
-                        <td class="padrao-fonte-texto">R$ 25,00</td>
-                        <td>
-                            <button (click)="editarAeroporto(aeroporto.id)">
-                                <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
-                              </button>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="padrao-fonte-texto">03</td>
-                        <td class="padrao-fonte-texto">Pizza 4 Queijos</td>
-                        <td class="padrao-fonte-texto">R$ 60,00</td>
-                        <td>
-                            <button (click)="editarAeroporto(aeroporto.id)">
-                                <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
-                              </button>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="padrao-fonte-texto">04</td>
-                        <td class="padrao-fonte-texto">Pizza Catupiry</td>
-                        <td class="padrao-fonte-texto">R$ 20,00</td>
-                        <td>
-                          <button (click)="editarAeroporto(aeroporto.id)">
-                            <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-
-                  </table>
+            <div class="col-lg-6">
+              <label for="InputPassword1">Senha</label>
+              <input type="password" class="form-control"
+                placeholder="Senha">
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-lg-6">
+              <label>Nome</label>
+              <input type="text" class="form-control"
+                placeholder="Nome">
+            </div>
+  
+            <div class="col-lg-6">
+              <label>Perfil</label>
+              <select class="form-control" style="width: 100%;">
+  
+                <option value="1">Administrador</option>
+                <option value="2">Ponto de Coleta</option>
+                <option value="4">Financeiro</option>
+                <option value="5">SAC</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-lg-6">
+              <label>Biografia</label>
+              <input type="text" class="form-control"
+                placeholder="Biografia" />
+            </div>
+            <div class="col-lg-6">
+              <label>Telefone</label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-phone"></i>
                 </div>
+                <input type="tel" class="form-control"
+                  placeholder="Telefone" maxlength="17"   type="text" />
               </div>
             </div>
           </div>
-          <!-- /.box-body -->
+  
+  
         </div>
-      </div>
-    </div>
-  </section>
-</mk-box>
+        <div class="row">
+          <div class="col-lg-6">
+            <button [disabled]="loading" type="submit" class="btn btn-primary">Enviar</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />        </div>
+        </div>
+      </form>
+    </section>
+  </mk-box>

@@ -2,7 +2,9 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 
 import * as Prism from 'prismjs';
 import { UserService } from 'src/app/service/user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UsuarioResource } from 'src/app/model/usuario-resource';
 
 @Component({
   selector: 'app-usuarios',
@@ -11,10 +13,71 @@ import { Router } from '@angular/router';
 })
 export class UsuariosComponent {
 
-    constructor() {
+  usuarioForm: FormGroup;
+  usuario : UsuarioResource = new UsuarioResource();
+  isSubmited = false;
+  loading = false;
 
+  idUsuarioEdicao : number;
+
+    constructor(private usuarioService : UserService,
+                private router : Router,
+                private formBuilder : FormBuilder,
+                private route : ActivatedRoute
+                ) {}
+
+  ngAfterViewInit() {
+    Prism.highlightAll();
+  }
+
+  ngOnInit() {
+    this.usuarioForm = this.formBuilder.group({
+      login: ['',[Validators.required]],
+      senha: ['',[Validators.required]],
+      nome: ['',[Validators.required]],
+      sexo : ['',[Validators.required]],
+      email :  ['',[Validators.required, Validators.email]],
+      perfil : '',
+    });
+
+    this.idUsuarioEdicao = this.route.snapshot.queryParams['idUser'];
+
+    if(this.idUsuarioEdicao != undefined) {
+      
+      this.usuarioService.obterUsuario(this.idUsuarioEdicao).subscribe(
+        usuarioRetornado => {
+            this.usuarioForm.controls['login'].setValue(usuarioRetornado.login);
+            this.usuarioForm.controls['senha'].setValue(usuarioRetornado.senha);
+            this.usuarioForm.controls['nome'].setValue(usuarioRetornado.nome);
+            this.usuarioForm.controls['sexo'].setValue(usuarioRetornado.sexo);
+            this.usuarioForm.controls['email'].setValue(usuarioRetornado.email);
+            this.usuarioForm.controls['perfil'].setValue(usuarioRetornado.perfil);
+        })
     }
+}
 
+get formControls() {
+  return this.usuarioForm.controls;
+}
 
+manterUsuario(){
 
+  this.isSubmited = true;
+
+  if(this.usuarioForm.invalid){
+    return;
+  }
+
+  this.loading = true;
+
+  this.usuario.id = this.idUsuarioEdicao;
+  this.usuarioService.manterUsuario(this.usuario);
+  
+  setTimeout(() => {
+
+    this.loading = false;
+    this.isSubmited = false;
+    this.router.navigate(['cadastros/lista-usuarios', {"refresh": (new Date().getTime())}]);
+  }, 600);
+}
 }
