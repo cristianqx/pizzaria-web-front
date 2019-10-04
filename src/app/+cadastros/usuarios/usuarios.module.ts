@@ -5,12 +5,14 @@ import { UsuariosRoutingModule } from './usuarios-routing.module';
 import { UsuariosComponent } from './usuarios.component';
 
 import { BoxModule } from 'angular-admin-lte';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     UsuariosRoutingModule,
-    BoxModule
+    BoxModule,
+    FormsModule, ReactiveFormsModule,
   ],
   declarations: [UsuariosComponent]
 })
