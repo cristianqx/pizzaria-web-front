@@ -12,13 +12,13 @@ import { Router } from '@angular/router';
 export class ListarUsuariosComponent implements OnInit {
 
   usuarios : Observable<UsuarioResource[]>
+  usuario : UsuarioResource[];
   
   constructor(private usuarioService : UserService,
               private router : Router) { }
 
   ngOnInit() {
     this.obterUsuarios();
-    console.log(this.obterUsuarios());
   }
 
   obterUsuarios() {
@@ -29,4 +29,12 @@ export class ListarUsuariosComponent implements OnInit {
     this.router.navigate(['cadastros/usuarios'], { queryParams: { idUser: idUsuario }});
     return false;
   }
+
+  excluirUsuario(usuario: UsuarioResource): void {
+    this.usuarioService.deletarUsuario(usuario.id)
+      .subscribe( data => {
+        this.usuario = this.usuario.filter(u => u !== usuario);
+      })
+  };
+
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginResource } from '../model/login-resource';
-import { DEFAULT_HTTP_OPTIONS, ENDPOINT_LOGIN, ENDPOINT_LISTAR_USUARIOS, ENDPOINT_BUSCAR_USUARIO, ENDPOINT_MANTER_USUARIO } from '../endpoint-constants';
+import { DEFAULT_HTTP_OPTIONS, ENDPOINT_LOGIN, ENDPOINT_LISTAR_USUARIOS, ENDPOINT_BUSCAR_USUARIO, ENDPOINT_MANTER_USUARIO, ENDPOINT_EXCLUIR_USUARIO } from '../endpoint-constants';
 import { Observable } from 'rxjs';
 import { UsuarioResource } from '../model/usuario-resource';
 
@@ -20,6 +20,10 @@ export class UserService {
   obterUsuario(id: number) : Observable<any> {
     return this.http.get(ENDPOINT_BUSCAR_USUARIO + id + DEFAULT_HTTP_OPTIONS);
   } 
+
+  deletarUsuario(id: number){
+    return this.http.delete(ENDPOINT_EXCLUIR_USUARIO + id);
+  }
 
   manterUsuario(usuario : UsuarioResource): any {
 

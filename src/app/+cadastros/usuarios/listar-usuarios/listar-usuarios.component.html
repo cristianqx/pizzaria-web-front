@@ -49,7 +49,7 @@
                     <tbody>
                       <tr role="row" class="odd" *ngFor="let usuario of usuarios | async">
                         <td>{{usuario.login}}</td>
-                        <td>****</td>
+                        <td class="hidetext">{{usuario.senha}</td>
                         <td>{{usuario.nome}}</td>
                         <td>{{usuario.perfil.descricao}}</td>
                         <td>
@@ -58,7 +58,7 @@
                           </button>
                         </td>
                         <td>
-                          <button (click)="excluirUsuario(usuario.id)">
+                          <button (click)="excluirUsuario(usuario)">
                             <img src="../../../../assets/icon/x-button.png" wight="40px" height="40px;">
                           </button>
                         </td>
