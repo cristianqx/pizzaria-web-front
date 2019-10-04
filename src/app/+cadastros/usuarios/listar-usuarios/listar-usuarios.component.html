@@ -1,0 +1,77 @@
+<mk-box header="Listagem de Usuarios" [isCollapsable]="false" [isRemovable]="false">
+  <section class="content">
+
+    <div class="row">
+
+      <div class="col-xs-12">
+        <div class="box">
+          <!-- /.box-header -->
+          <br />
+
+          <div class="box-body">
+            <div>
+              <tr>
+                <td>
+                  <a routerLink="/cadastros/usuarios" class="btn btn-block btn-primary" role="button">+ Novo
+                    Usuário</a>
+                </td>
+              </tr>
+            </div>
+            <br />
+            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                    aria-describedby="example2_info">
+
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Browser: activate to sort column ascending">Login</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending">Senha</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="CSS grade: activate to sort column ascending">Nome</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending">Profissão</th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Editar
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                        aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Excluir
+                      </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr role="row" class="odd" *ngFor="let usuario of usuarios | async">
+                        <td>{{usuario.login}}</td>
+                        <td>****</td>
+                        <td>{{usuario.nome}}</td>
+                        <td>{{usuario.perfil.descricao}}</td>
+                        <td>
+                          <button (click)="editarUsuario(usuario.id)">
+                            <img src="../../../../assets/icon/edit.png" wight="40px" height="40px;">
+                          </button>
+                        </td>
+                        <td>
+                          <button (click)="excluirUsuario(usuario.id)">
+                            <img src="../../../../assets/icon/x-button.png" wight="40px" height="40px;">
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+    </div>
+  </section>
+</mk-box>

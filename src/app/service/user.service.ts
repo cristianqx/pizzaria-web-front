@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-  obterUsuarios()  : Observable<any> {
+  obterUsuarios(): Observable<any> {
     return this.http.get(ENDPOINT_LISTAR_USUARIOS);
   }
 

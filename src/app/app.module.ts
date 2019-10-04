@@ -26,7 +26,7 @@ import { SairComponent } from './sair/sair.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    SairComponent
+    SairComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

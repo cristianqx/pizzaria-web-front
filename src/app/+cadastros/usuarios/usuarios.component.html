@@ -1,65 +1,65 @@
-<mk-box header="Listagem de Usuários Cadastrados" aria-hidden="true" [isCollapsable]="false" [isRemovable]="false">
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <!-- /.box-header -->
-            <div class="box-body">
-              <br />
-              <div>
-                <tr>
-                  <td>
-                    <a routerLink="/cadastros/usuario" class="btn btn-block btn-primary" role="button">+ Novo Usuário</a>
-                  </td>
-                </tr>
-              </div>
-              <br />
-              <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                <div class="row">
-                  <div class="col-sm-6"></div>
-                  <div class="col-sm-6"></div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="table-reponsive">
-                      <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
-                        aria-describedby="example2_info">
-                        <thead>
-                          <tr role="row">
-                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                              aria-label="Browser: activate to sort column ascending">Login</th>
-                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                              aria-label="Platform(s): activate to sort column ascending">Nome</th>
-                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                              aria-label="Engine version: activate to sort column ascending">Email</th>
-                              <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                              aria-label="Engine version: activate to sort column ascending">Função</th>
-                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                              aria-label="Engine version: activate to sort column ascending">Editar</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr role="row" class="odd">
-                            <td>adm</td>
-                            <td>Administrador</td>
-                            <td>adm@pizzaria.com</td>
-                            <td>Perfil Administrador</td>
-                            <td>
-                                <button (click)="editarAeroporto(aeroporto.id)">
-                                    <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
-                                  </button>
-                          </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<mk-box header="Cadastro de Usuário" [isCollapsable]="false" [isRemovable]="false">
+  <section class="content">
+    <form role="form" [formGroup]="usuarioForm" (ngSubmit)="manterUsuario()">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <label for="inputLogin">Login</label>
+            <input type="login" class="form-control" formControlName="login" [(ngModel)]="usuario.login"
+              [ngClass]="{ 'is-invalid' : isSubmited && formControls.email.error }" placeholder="login" autofocus>
+            <div *ngIf="isSubmited && formControls.login.errors" class="invalid-feedback">
+              <div *ngIf="formControls.login.errors.required">Por favor informe o login</div>
+              <div *ngIf="formControls.login.errors.login">Informe um login válido</div>
             </div>
-            <!-- /.box-body -->
+          </div>
+
+          <div class="col-lg-6">
+            <label for="InputPassword1">Senha</label>
+            <input type="password" class="form-control" formControlName="senha" [(ngModel)]="usuario.senha"
+              placeholder="Senha">
+            <div *ngIf="isSubmited && formControls.senha.errors" class="invalid-feedback">
+              <div *ngIf="formControls.senha.errors.required">Por favor informe a senha</div>
+            </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Nome</label>
+            <input type="text" class="form-control" formControlName="nome" [(ngModel)]="usuario.nome"
+              placeholder="Nome">
+            <div *ngIf="isSubmited && formControls.nome.errors" class="invalid-feedback">
+              <div *ngIf="formControls.nome.errors.required">Por favor informe o nome</div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <label>Perfil</label>
+            <select class="form-control" style="width: 100%;" formControlName="perfil" [(ngModel)]="usuario.perfil.id">
+
+              <option value="1">Gerente</option>
+              <option value="2">Balconista</option>
+              <option value="3">Pizzaiolo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <label>Email</label>
+            <input type="text" class="form-control" formControlName="email" [(ngModel)]="usuario.email"
+              placeholder="Email" />
+          </div>
+          <div class="col-lg-6">
+            <label>Sexo</label>
+            <select class="form-control" style="width: 100%;" formControlName="sexo" [(ngModel)]="usuario.sexo">
+
+              <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
+            </select>
+          </div>
+        </div>
+
       </div>
-    </section>
-  </mk-box>
+    </form>
+  </section>

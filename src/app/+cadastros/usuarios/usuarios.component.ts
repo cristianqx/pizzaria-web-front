@@ -73,11 +73,11 @@ manterUsuario(){
   this.usuario.id = this.idUsuarioEdicao;
   this.usuarioService.manterUsuario(this.usuario);
   
-  setTimeout(() => {
+    setTimeout(() => {
 
-    this.loading = false;
-    this.isSubmited = false;
-    this.router.navigate(['cadastros/lista-usuarios', {"refresh": (new Date().getTime())}]);
-  }, 600);
-}
+      this.loading = false;
+      this.isSubmited = false;
+      this.router.navigate(['cadastros/lista-usuarios', {"refresh": (new Date().getTime())}]);
+    }, 600);
+  }
 }
