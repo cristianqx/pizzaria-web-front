@@ -18,7 +18,7 @@ export class UserService {
   }
 
   obterUsuario(id: number) : Observable<any> {
-    return this.http.get(ENDPOINT_BUSCAR_USUARIO + id + DEFAULT_HTTP_OPTIONS);
+    return this.http.get(ENDPOINT_BUSCAR_USUARIO + id);
   } 
 
   deletarUsuario(id: number){

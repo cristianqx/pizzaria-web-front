@@ -51,7 +51,7 @@ export class UsuariosComponent {
             this.usuarioForm.controls['nome'].setValue(usuarioRetornado.nome);
             this.usuarioForm.controls['sexo'].setValue(usuarioRetornado.sexo);
             this.usuarioForm.controls['email'].setValue(usuarioRetornado.email);
-            this.usuarioForm.controls['perfil'].setValue(usuarioRetornado.perfil);
+            this.usuarioForm.controls['perfil'].setValue(usuarioRetornado.perfil.id);
         })
     }
 }
@@ -77,7 +77,7 @@ manterUsuario(){
 
       this.loading = false;
       this.isSubmited = false;
-      this.router.navigate(['cadastros/lista-usuarios', {"refresh": (new Date().getTime())}]);
+      this.router.navigate(['cadastros/listar-usuarios', {"refresh": (new Date().getTime())}]);
     }, 600);
   }
 }

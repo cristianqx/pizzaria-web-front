@@ -15,7 +15,7 @@ export const PREFIX_SERVICE_HOST = 'http://localhost:8080/projetointegrador/api'
 /** Endpoint do servico de login */
 export const ENDPOINT_LOGIN = PREFIX_SERVICE_HOST + '/usuario/logar';
 /** Endpoint do servico para retornar usuario pelo id */
-export const ENDPOINT_BUSCAR_USUARIO = PREFIX_SERVICE_HOST + '/usuario/'
+export const ENDPOINT_BUSCAR_USUARIO = PREFIX_SERVICE_HOST + '/usuario/get/'
 /** Endpoint do servico de retornar lista de usuarios */
 export const ENDPOINT_LISTAR_USUARIOS = PREFIX_SERVICE_HOST + '/usuario/listar-usuarios';
 /** Endpoint do servico de manter usuario */
