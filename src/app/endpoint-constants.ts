@@ -22,3 +22,11 @@ export const ENDPOINT_LISTAR_USUARIOS = PREFIX_SERVICE_HOST + '/usuario/listar-u
 export const ENDPOINT_MANTER_USUARIO = PREFIX_SERVICE_HOST + '/usuario/insertuser';
 /** Endpoint do servico de excluir usuario */
 export const ENDPOINT_EXCLUIR_USUARIO = PREFIX_SERVICE_HOST + '/usuario/del/';
+/** Endpoint do servico de inserir produtos no sistema */
+export const ENDPOINT_INSERIR_PRODUTO = PREFIX_SERVICE_HOST + '/produto/inserir-produto';
+/** Endpoint do servico de listar produtos*/
+export const ENDPOINT_LISTAR_PRODUTOS = PREFIX_SERVICE_HOST + '/produto/listar-produtos';
+/** Endpoint do servico para retornar produto pelo id */
+export const ENDPOINT_BUSCAR_PRODUTO = PREFIX_SERVICE_HOST + '/produto/get/'
+/** Endpoint do servico de excluir produto */
+export const ENDPOINT_EXCLUIR_PRODUTO = PREFIX_SERVICE_HOST + '/produto/del/';

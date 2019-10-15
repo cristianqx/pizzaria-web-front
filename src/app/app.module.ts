@@ -7,7 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 
 import { LayoutModule } from 'angular-admin-lte';
-
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import {MenuItem} from 'primeng/api';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
@@ -20,6 +22,7 @@ import { SairComponent } from './sair/sair.component';
     AppRoutingModule,
     FormsModule, ReactiveFormsModule,
     CoreModule,
+    AccordionModule,
     LayoutModule.forRoot(adminLteConf),
     LoadingPageModule, MaterialBarModule
   ],

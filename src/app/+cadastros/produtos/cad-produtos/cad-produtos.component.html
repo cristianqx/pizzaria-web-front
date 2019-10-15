@@ -1,4 +1,4 @@
-<mk-box header="Cadastro e listagem de produtos" [isCollapsable]="false" [isRemovable]="false">
+<mk-box header="Listagem de produtos" [isCollapsable]="false" [isRemovable]="false">
   <section class="content">
     <div class="row">
       <div class="col-xs-12">
@@ -9,7 +9,7 @@
             <div>
               <tr>
                 <td>
-                  <a routerLink="/cadastros/usuario" class="btn btn-block btn-primary" role="button">+ Cadastrar
+                  <a routerLink="/cadastros/produtos" class="btn btn-block btn-primary" role="button">+ Cadastrar
                     Produtos</a>
                 </td>
               </tr>
@@ -32,52 +32,35 @@
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                           aria-label="Platform(s): activate to sort column ascending" class="padrao-texto-titulo">Nome</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Tipo</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                           aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Preço</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                           aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Editar</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Excluir</th>
                     </thead>
                     <tbody>
 
-                      <tr role="row" class="odd">
-                        <td class="padrao-fonte-texto">01</td>
-                        <td class="padrao-fonte-texto">Pizza Camarão</td>
-                        <td class="padrao-fonte-texto">R$ 65,00</td>
+                      <tr role="row" class="odd" *ngFor="let produto of produtos | async">
+                        <td class="padrao-fonte-texto">{{produto.id}}</td>
+                        <td class="padrao-fonte-texto">{{produto.nomeProduto}}</td>
+                        <td class="padrao-fonte-texto">{{produto.tipoPizza.descricao}}</td>
+                        <td class="padrao-fonte-texto">R$ {{produto.valor}}</td>
+
                         <td>
-                            <button (click)="editarAeroporto(aeroporto.id)">
+                            <button (click)="editarProduto(produto.id)">
                                 <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
                               </button>
                         </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="padrao-fonte-texto">02</td>
-                        <td class="padrao-fonte-texto">Pizza Mussarela</td>
-                        <td class="padrao-fonte-texto">R$ 25,00</td>
+
                         <td>
-                            <button (click)="editarAeroporto(aeroporto.id)">
-                                <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
-                              </button>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="padrao-fonte-texto">03</td>
-                        <td class="padrao-fonte-texto">Pizza 4 Queijos</td>
-                        <td class="padrao-fonte-texto">R$ 60,00</td>
-                        <td>
-                            <button (click)="editarAeroporto(aeroporto.id)">
-                                <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
-                              </button>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="padrao-fonte-texto">04</td>
-                        <td class="padrao-fonte-texto">Pizza Catupiry</td>
-                        <td class="padrao-fonte-texto">R$ 20,00</td>
-                        <td>
-                          <button (click)="editarAeroporto(aeroporto.id)">
-                            <img src="../../../assets/icon/edit.png" width="30px;" height="30px;">
+                          <button (click)="excluirProduto(produto)">
+                            <img src="../../../../assets/icon/x-button.png" wight="40px" height="40px;">
                           </button>
                         </td>
                       </tr>
+                     
                     </tbody>
 
                   </table>

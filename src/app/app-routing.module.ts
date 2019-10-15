@@ -18,6 +18,8 @@ const routes: Routes = [
             title: 'Listagem de Usuários'}},  
           {path: 'produtos',loadChildren: './+cadastros/produtos/produtos.module#ProdutosModule',data: {
             title: 'Produtos'}},
+          {path: 'cad-produtos',loadChildren: './+cadastros/produtos/cad-produtos/cad-produtos.module#CadastroProdutosModule',data: {
+            title: 'Listagem de Produtos'}},
         ]
       },   
 
