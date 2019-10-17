@@ -20,7 +20,7 @@
             </div>
             <div class="col-lg-6">
               <label for="inputValor">Valor do Produto</label>
-              <input type="text" class="form-control" formControlName="valor" [(ngModel)]="produto.valor"
+              <input currencyMask type="text" class="form-control" formControlName="valor" [(ngModel)]="produto.valor"
                 placeholder="Valor">
                 <div *ngIf="isSubmited && formControls.valor.errors" class="invalid-feedback">
                   <div *ngIf="formControls.valor.errors.required">Por favor informe o valor</div>
@@ -39,7 +39,8 @@
               </select>
             </div>
           </div>
-  
+
+
   
         </div>
         <div class="row">

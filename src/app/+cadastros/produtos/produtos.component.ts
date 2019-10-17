@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-
+import { NgxCurrencyModule } from "ngx-currency";
 import * as Prism from 'prismjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProdutoResource } from 'src/app/model/produto-resource';

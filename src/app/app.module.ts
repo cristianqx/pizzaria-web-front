@@ -8,16 +8,18 @@ import { CoreModule } from './core/core.module';
 
 import { LayoutModule } from 'angular-admin-lte';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
-import {MenuItem} from 'primeng/api';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgxCurrencyModule } from "ngx-currency";
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
 import { SairComponent } from './sair/sair.component';
 
 @NgModule({
   imports: [
+    TextMaskModule,
+    NgxCurrencyModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule, ReactiveFormsModule,

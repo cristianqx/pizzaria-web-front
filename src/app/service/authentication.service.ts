@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 import { ADMIN_PROFILE_MENU } from '../security/profiles/admin-profile';
 import { FINANCE_PROFILE_MENU } from '../security/profiles/financeiro-profile';
 import { SAC_PROFILE_MENU } from '../security/profiles/sac-profile';
-import { BALCONISTA_MENU } from '../security/profiles/pontocoleta-profile';
+import { BALCONISTA_MENU } from '../security/profiles/balconista-profile';
 import { PIZZAIOLO_MENU } from '../security/profiles/pizzaiolo-profile';
 
 /**

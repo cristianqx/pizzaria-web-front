@@ -20,6 +20,10 @@ const routes: Routes = [
             title: 'Produtos'}},
           {path: 'cad-produtos',loadChildren: './+cadastros/produtos/cad-produtos/cad-produtos.module#CadastroProdutosModule',data: {
             title: 'Listagem de Produtos'}},
+          {path: 'pedidos',loadChildren: './+cadastros/pedidos/pedidos.module#PedidosModule',data: {
+            title: 'Produtos'}},
+          {path: 'lista-pedidos',loadChildren: './+cadastros/pedidos/lista-pedidos/lista-pedidos.module#ListaPedidosModule',data: {
+            title: 'Lista de Pedidos'}},
         ]
       },   
 

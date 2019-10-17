@@ -17,7 +17,8 @@ export class UsuariosComponent {
   usuario : UsuarioResource = new UsuarioResource();
   isSubmited = false;
   loading = false;
-
+  public myModel = ''
+  public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
   idUsuarioEdicao : number;
 
     constructor(private usuarioService : UserService,
@@ -31,6 +32,7 @@ export class UsuariosComponent {
   }
 
   ngOnInit() {
+
     this.usuarioForm = this.formBuilder.group({
       login: ['',[Validators.required]],
       senha: ['',[Validators.required]],
