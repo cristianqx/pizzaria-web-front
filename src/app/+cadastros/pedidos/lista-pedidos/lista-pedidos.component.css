@@ -13,3 +13,81 @@
     background: white;
     color: #FFC107;
   }
+
+#btn-ver-mais {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    position: absolute;
+    left: 38%;
+    color: #ffa200;
+    padding: 5px 10px;
+    background: -webkit-gradient(
+      linear, left top, left bottom,
+      from(#ffffff),
+      color-stop(0.50, #ffffff),
+      to(#d6d6d6));
+    background: linear-gradient(
+      top,
+      #ffffff 0%,
+      #ffffff 50%,
+      #d6d6d6);
+    border-radius: 10px;
+    border: 3px solid #ffbf00;
+    box-shadow:
+      0px 1px 3px rgba(000,000,000,0.5),
+      inset 31px 21px 10px rgba(255,255,255,1);
+    text-shadow:
+      0px -1px 0px rgba(000,000,000,0.1),
+      0px 1px 0px rgba(255,255,255,1);  
+}
+
+#btn-editar-pedido {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #0000a1;
+    padding: 5px 10px;
+    background: -webkit-gradient(
+      linear, left top, left bottom,
+      from(#ffffff),
+      color-stop(0.50, #ffffff),
+      to(#b5b5b5));
+    background: linear-gradient(
+      top,
+      #ffffff 0%,
+      #ffffff 50%,
+      #b5b5b5);
+    border-radius: 10px;
+    border: 3px solid #0000a1;
+    box-shadow:
+      0px 1px 3px rgba(000,000,000,0.5),
+      inset 0px 0px 3px rgba(255,255,255,1);
+    text-shadow:
+      0px -1px 0px rgba(000,000,000,0.2),
+      0px 1px 0px rgba(255,255,255,1);  
+}
+
+#btn-excluir {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #ff0015;
+    padding: 10px 20px;
+    background: -webkit-gradient(
+      linear, left top, left bottom,
+      from(#ffffff),
+      color-stop(0.50, #ffffff),
+      to(#d6d6d6));
+    background: linear-gradient(
+      top,
+      #ffffff 0%,
+      #ffffff 50%,
+      #d6d6d6);
+    border-radius: 10px;
+    border: 3px solid #ff0000;
+    box-shadow:
+      0px 1px 3px rgba(000,000,000,0.5),
+      inset 0px 0px 3px rgba(255,255,255,1);
+    text-shadow:
+      0px -1px 0px rgba(000,000,000,0.1),
+      0px 1px 0px rgba(255,255,255,1); 
+     padding: 5px 10px;
+}

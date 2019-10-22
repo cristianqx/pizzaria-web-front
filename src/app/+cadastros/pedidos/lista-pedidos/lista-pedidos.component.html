@@ -12,6 +12,8 @@
                   <a routerLink="/cadastros/produtos" class="btn btn-block btn-primary" role="button">+ Cadastrar Novo
                     Pedido</a>
                 </td>
+                <br />
+
               </tr>
             </div>
             <br />
@@ -28,43 +30,65 @@
                     <thead>
                       <tr role="row">
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Browser: activate to sort column ascending" class="padrao-texto-titulo">Número do Pedido</th>
+                          aria-label="Browser: activate to sort column ascending" class="padrao-texto-titulo">Número do
+                          Pedido</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Platform(s): activate to sort column ascending" class="padrao-texto-titulo">Horário do Registro</th>
+                          aria-label="Platform(s): activate to sort column ascending" class="padrao-texto-titulo">
+                          Horário do Registro</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Quantidade de Produtos</th>
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Quantidade de Produtos</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Preço Total</th>
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Preço Total</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Status do Pedido</th>
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Status do Pedido</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Observação</th>
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Observação</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Balconista</th>
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Balconista</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Editar Pedido</th>
-                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Excluir Pedido</th>
-                        </thead>
-                        
-                    <tbody>
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Editar Pedido</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Excluir Pedido</th>
+                    </thead>
 
-                      <tr role="row" class="odd">
-                        <td class="padrao-fonte-texto"></td>
-                        <td class="padrao-fonte-texto"></td>
-                        <td class="padrao-fonte-texto"></td>
-                        <td class="padrao-fonte-texto"></td>
-                        <td class="padrao-fonte-texto"></td>
-                        <td class="padrao-fonte-texto"></td>
-                        <td class="padrao-fonte-texto"></td>
+                    <tbody>
+ 
+                      <tr role="row" class="odd" *ngFor="let pedido of pedidos | async">
+
+                        <td class="padrao-fonte-texto">{{pedido.id}}</td>
+                        <td class="padrao-fonte-texto">{{pedido.dataInicio}}</td>
+                        <td class="padrao-fonte-texto">{{pedido.quantidade}} <button [popover]="myPopover"
+                            id="btn-ver-mais">Detalhes +</button></td>
+                        <td class="padrao-fonte-texto">{{pedido.precoTotal}}</td>
+                        <td class="padrao-fonte-texto" style="color: red;" *ngIf="pedido.tipoStatus.id == 1">
+                          {{pedido.tipoStatus.descricao}}</td>
+                        <td class="padrao-fonte-texto" style="color: green;" *ngIf="pedido.tipoStatus.id == 2">
+                          {{pedido.tipoStatus.descricao}}</td>
+                        <td class="padrao-fonte-texto" style="color: blue;" *ngIf="pedido.tipoStatus.id == 3">
+                          {{pedido.tipoStatus.descricao}}</td>
+                        <td class="padrao-fonte-texto">{{pedido.observacao}}</td>
+                        <td class="padrao-fonte-texto">{{pedido.usuario.nome}}</td>
                         <td>
-                        <button type="button" id="btn-radius-editar" class="btn btn-secondary btn-sm" (click)="editar(produto)">Editar Pedido</button>
+                          <button type="button" id="btn-radius-editar" class="btn btn-secondary btn-sm"
+                            id="btn-editar-pedido" (click)="editar(produto)">Editar Pedido</button>
                         </td>
                         <td>
-                          <button type="button" id="btn-radius-excluir" class="btn btn-secondary btn-sm" (click)="excluirProduto(produto)">Deletar Pedido</button>
+                          <button type="button" id="btn-radius-excluir" id="btn-excluir"
+                            (click)="excluirProduto(produto)">Deletar Pedido</button>
                         </td>
+                        <popover-content #myPopover title="Detalhes do Produto" placement="Right" [animation]="true"
+                        [closeOnClickOutside]="true">
+                        <span style="color: #00b3ee"> {{pedido.quantidade}} Und - {{pedido.produto.nomeProduto}} - {{pedido.produto.tipoPizza.descricao}}<br/></span>
+                      </popover-content>
                       </tr>
-                     
+
                     </tbody>
 
                   </table>

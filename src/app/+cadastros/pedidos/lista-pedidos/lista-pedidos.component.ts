@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { PedidoResource } from 'src/app/model/pedido-resource';
+import { PedidoService } from 'src/app/service/pedido.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaPedidosComponent implements OnInit {
 
-  constructor() { }
+  pedidos : Observable<PedidoResource[]>
+  pedido: PedidoResource[];
+  
+
+  constructor(private pedidoService : PedidoService,
+              private router: Router) { }
 
   ngOnInit() {
+    this.obterPedidos();
+  }
+
+  obterPedidos() {
+    this.pedidos = this.pedidoService.listarPedidos();
   }
 
 }

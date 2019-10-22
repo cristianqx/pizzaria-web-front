@@ -12,12 +12,15 @@ import { NgxCurrencyModule } from "ngx-currency";
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import {PopoverModule} from "ngx-popover";
+
 
 import { LoadingPageModule, MaterialBarModule } from 'angular-loading-page';
 import { SairComponent } from './sair/sair.component';
 
 @NgModule({
   imports: [
+    PopoverModule,
     TextMaskModule,
     NgxCurrencyModule,
     BrowserModule,
@@ -32,6 +35,7 @@ import { SairComponent } from './sair/sair.component';
     AppComponent,
     HomeComponent,
     SairComponent,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
