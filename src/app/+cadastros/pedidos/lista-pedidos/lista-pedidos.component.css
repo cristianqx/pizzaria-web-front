@@ -1,0 +1,15 @@
+#btn-radius-excluir {
+    border: 1px solid #DC3545;
+    padding: 4px;
+    border-radius: 4px;
+    background: white;
+    color: #DC3545;
+  }
+
+#btn-radius-editar {
+    border: 1px solid #FFC107;
+    padding: 4px;
+    border-radius: 4px;
+    background: white;
+    color: #FFC107;
+  }

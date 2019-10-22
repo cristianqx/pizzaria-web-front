@@ -1,3 +1,80 @@
-<p>
-  lista-pedidos works!
-</p>
+<mk-box header="Listagem de produtos" [isCollapsable]="false" [isRemovable]="false">
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <!-- /.box-header -->
+          <div class="box-body">
+            <br />
+            <div>
+              <tr>
+                <td>
+                  <a routerLink="/cadastros/produtos" class="btn btn-block btn-primary" role="button">+ Cadastrar Novo
+                    Pedido</a>
+                </td>
+              </tr>
+            </div>
+            <br />
+            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6"></div>
+              </div>
+              <div class="panel panel-primary">
+                <div class="panel-heading">Últimos pedidos</div>
+                <div class="panel-body">
+                  <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                    aria-describedby="example2_info">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Browser: activate to sort column ascending" class="padrao-texto-titulo">Número do Pedido</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending" class="padrao-texto-titulo">Horário do Registro</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Quantidade de Produtos</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Preço Total</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Status do Pedido</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Observação</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Balconista</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Editar Pedido</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">Excluir Pedido</th>
+                        </thead>
+                        
+                    <tbody>
+
+                      <tr role="row" class="odd">
+                        <td class="padrao-fonte-texto"></td>
+                        <td class="padrao-fonte-texto"></td>
+                        <td class="padrao-fonte-texto"></td>
+                        <td class="padrao-fonte-texto"></td>
+                        <td class="padrao-fonte-texto"></td>
+                        <td class="padrao-fonte-texto"></td>
+                        <td class="padrao-fonte-texto"></td>
+                        <td>
+                        <button type="button" id="btn-radius-editar" class="btn btn-secondary btn-sm" (click)="editar(produto)">Editar Pedido</button>
+                        </td>
+                        <td>
+                          <button type="button" id="btn-radius-excluir" class="btn btn-secondary btn-sm" (click)="excluirProduto(produto)">Deletar Pedido</button>
+                        </td>
+                      </tr>
+                     
+                    </tbody>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+    </div>
+  </section>
+</mk-box>
