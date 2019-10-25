@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { PedidoResource } from "../model/pedido-resource";
-import { DEFAULT_HTTP_OPTIONS, ENDPOINT_INSERIR_PEDIDO, ENDPOINT_LISTAR_PEDIDOS } from "../endpoint-constants";
+import { DEFAULT_HTTP_OPTIONS, ENDPOINT_INSERIR_PEDIDO, ENDPOINT_LISTAR_PEDIDOS, ENDPOINT_BUSCAR_PEDIDO } from "../endpoint-constants";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -25,5 +25,9 @@ export class PedidoService {
 
     listarPedidos() : Observable<any> {
         return this.http.get(ENDPOINT_LISTAR_PEDIDOS);
+    }
+
+    obterPedido(id: number) : Observable<any> {
+        return this.http.get(ENDPOINT_BUSCAR_PEDIDO + id);
     }
 }

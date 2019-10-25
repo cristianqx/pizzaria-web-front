@@ -11,6 +11,7 @@ import { UsuarioResource } from "./usuario-resource";
      id: number;
      dataInicio: Date;
      dataFim: Date;
+     valorUnitario: number;
      quantidade: number;
      produto : ProdutoResource;
      precoTotal: number;

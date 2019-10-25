@@ -46,12 +46,12 @@
                         <td class="padrao-fonte-texto">{{produto.id}}</td>
                         <td class="padrao-fonte-texto">{{produto.nomeProduto}}</td>
                         <td class="padrao-fonte-texto">{{produto.tipoPizza.descricao}}</td>
-                        <td class="padrao-fonte-texto">R$ {{produto.valor}}</td>
+                        <td class="padrao-fonte-texto">{{produto.valor | currency:'BRL':true}}</td>
                         <td>
-                          <button type="button" id="btn-radius-editar" class="btn btn-secondary btn-sm" (click)="editarProduto(produto.id)">Editar Produto</button>
+                          <button type="button" id="btn-editar-produto" class="btn btn-secondary btn-sm" (click)="editarProduto(produto.id)">Editar Produto</button>
                           </td>
                           <td>
-                            <button type="button" id="btn-radius-excluir" class="btn btn-secondary btn-sm" (click)="excluirProduto(produto)">Deletar Produto</button>
+                            <button type="button" id="btn-excluir-produto" class="btn btn-secondary btn-sm" (click)="excluirProduto(produto)">Deletar Produto</button>
                           </td>
                       </tr>
                      

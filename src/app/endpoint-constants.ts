@@ -34,3 +34,5 @@ export const ENDPOINT_EXCLUIR_PRODUTO = PREFIX_SERVICE_HOST + '/produto/del/';
 export const ENDPOINT_INSERIR_PEDIDO = PREFIX_SERVICE_HOST + '/pedido/inserir-pedido';
 /** Endpoint do servico de listar pedidos*/
 export const ENDPOINT_LISTAR_PEDIDOS = PREFIX_SERVICE_HOST + '/pedido/listar-pedidos';
+/** Endpoint do servico para retornar pedido pelo id */
+export const ENDPOINT_BUSCAR_PEDIDO = PREFIX_SERVICE_HOST + '/usuario/get/'
