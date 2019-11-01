@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PedidoResource } from 'src/app/model/pedido-resource';
 import { PedidoService } from 'src/app/service/pedido.service';
@@ -15,7 +15,8 @@ import { ProdutoService } from 'src/app/service/produto.service';
   styleUrls: ['./pedidos.component.css']
 })
 export class PedidosComponent implements OnInit {
-
+  @ViewChild('produtoInput') employeeInput: TemplateRef<any>;
+  isSubmitted: boolean = false;
   pedidoForm : FormGroup;
   usuarioLogado : UsuarioResource;
   pedido: PedidoResource = new PedidoResource();
@@ -24,7 +25,9 @@ export class PedidosComponent implements OnInit {
   loading = false;
 
   idPedidoEdicao : number;
-  filtroProdutos: any[];
+  filteredArray: any[] = [];
+  teste: any;
+  empSelected : any;
 
   constructor(private pedidoService : PedidoService,
               private router: Router,
@@ -32,25 +35,25 @@ export class PedidosComponent implements OnInit {
               private route: ActivatedRoute,
               private authService: AuthenticationService,
               private produtoService: ProdutoService) { 
-
                 this.usuarioLogado = this.authService.currentUserValue;
+                console.clear();
   }
 
                    
   ngOnInit() {
-
     this.usuarioLogado = this.authService.currentUserValue;
-
     this.produto = this.produtoService.obterProdutos();
 
+
+
     this.pedidoForm = this.formBuilder.group({
-      quantidade: ['', [Validators.required]],
-      produto : '',
-      valorUnitario : ['', [Validators.required]],
+      quantidade:  ['', [Validators.required]],
+      valor : ['', [Validators.required]],
       precoTotal: ['', [Validators.required]],
       observacao: '',
       tipoStatus : ['', [Validators.required]],
-      usuario: ['', [Validators.required]]
+      usuario: ['', [Validators.required]],
+      produto : '',
     });
 
     this.idPedidoEdicao = this.route.snapshot.queryParams['idPed'];
@@ -66,36 +69,59 @@ export class PedidosComponent implements OnInit {
           this.pedidoForm.controls['usuario'].setValue(pedidoRetornado.usuario.id);
         })
     }
-  }
+}
+
 
   get formControls() {
     return this.pedidoForm.controls;
   }
 
-
-  getValorProdutoSelecionado() {
+  produtoSelecionado(val : any) {
+    console.log(val);
+    this.pedidoForm.controls['valor'].setValue(val);
+  }  
   
-    this.pedidoForm.controls['valorUnitario'].valueChanges.subscribe(
-      data => {
-      console.log('Data: ' + data);
-      }
-    ); 
-    /*
-    this.produtoService.obterProdutos().subscribe(
-      data => {this.filtroProdutos = [];
-      for (let key in data) {
-        this.pedidoForm.controls['valorUnitario'].value(this.filtroProdutos.push(data[key].valorUnitario));
-      }
+  calcularPrecoTotal() {
+    let quantidade =  this.pedidoForm.controls['quantidade'].value;
+    let valorUnitario = this.pedidoForm.controls['valor'].value;
+    let total;
+
+    total = (quantidade * valorUnitario);
+    if(total != 'undefined' || null) {
+      this.pedidoForm.controls['precoTotal'].setValue(total);
+      this.pedidoForm.controls['quantidade'].setValue(quantidade);
+      this.pedidoForm.controls['valor'].setValue(valorUnitario);
+    } else {
+      alert("Ops! Ocorreu um erro");
     }
-  );
-  */
-}
+    console.log(total);
+
+  }
+
+  limparFiltros() {
+         /* this.pedidoForm.controls['quantidade'].setValue(null);
+          this.pedidoForm.controls['produto'].setValue(null);
+          this.pedidoForm.controls['precoTotal'].setValue(null);
+          this.pedidoForm.controls['observacao'].setValue(null);
+          this.pedidoForm.controls['tipoStatus'].setValue(null);
+          this.pedidoForm.controls['usuario'].setValue(null);*/
+          this.ngOnInit();
+  }
+
   manterPedido() {
     this.isSubmited = true;
 
       this.loading = true;
 
       this.pedido.id = this.idPedidoEdicao;
+
+      this.pedido.tipoStatus.id = 1;
+
+      this.pedido.produto = this.pedidoForm.controls['produto'].value;
+      
+      this.pedidoForm.controls['produto'].setValue(this.pedido.produto);
+
+      this.pedidoForm.controls['tipoStatus'].setValue(this.pedido.tipoStatus.id);
 
       this.pedidoService.manterPedido(this.pedido);
 

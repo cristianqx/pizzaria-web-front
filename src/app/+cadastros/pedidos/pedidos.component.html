@@ -1,75 +1,71 @@
 <mk-box header="Cadastro de Pedido" [isCollapsable]="false" [isRemovable]="false">
     <section class="content">
         <form role="form" [formGroup]="pedidoForm" (ngSubmit)="manterPedido()">
+
             <div class="box-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="inputPedido">Descrição do Pedido</label>
-                          <select class="form-control select2 select2-hidden-accessible" formControlName="produto"
-                            [(ngModel)]="pedido.produto.id" style="width: 100%;" tabindex="-1" aria-hidden="true" (change)="getValorProdutoSelecionado()">
-                            <option *ngFor="let produtos of produto | async" [value]="produtos.id">{{produtos.nomeProduto}}
-                            </option>
-                          </select>
+                        <label for="inputPedido">Descrição do Produto</label>
+                        <select class="form-control select2 select2-hidden-accessible" formControlName="produto"
+                            [(ngModel)]="empSelected" (ngModelChange)="produtoSelecionado($event)" style="width: 100%;"
+                            tabindex="-1" aria-hidden="true">
+                            <option *ngFor="let produtos of produto | async" [value]="produtos.valor">
+                                {{produtos.nomeProduto}}</option>
+                        </select>
                     </div>
 
                     <div class="col-lg-6">
                         <label for="InputValorUnitario">Valor por Unidade</label>
-                        <input type="text" class="form-control" formControlName="valorUnitario"
-                            [(ngModel)]="pedido.valorUnitario" placeholder="Valor">
+                        <input type="text" class="form-control" formControlName="valor" [ngModel]="1"
+                            placeholder="Valor" disabled="true">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-6">
                         <label for="inputPedido">Quantidade</label>
-                        <input type="text" class="form-control" formControlName="quantidade"
-                            [(ngModel)]="pedido.quantidade" autofocus>
+                        <input type="text" id="qtdUn" class="form-control" formControlName="quantidade"
+                            (blur)="calcularPrecoTotal()" [(ngModel)]="pedido.quantidade">
                     </div>
-
-                    <div class="col-lg-6">
-                        <label>Tamanho da Pizza</label>
-                        <select class="form-control" style="width: 100%;" formControlName="produto"
-                            [(ngModel)]="pedido.produto.tipoPizza">
-
-                            <option value="1">Inteira</option>
-                            <option value="2">Broto</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-
                     <div class="col-lg-6">
                         <label>Observação</label>
                         <input type="text" class="form-control" formControlName="observacao"
                             [(ngModel)]="pedido.observacao" />
                     </div>
+                </div>
+
+                <br /><br />
+
+                <div class="row">
                     <div class="col-lg-6">
                         <label>Valor Total</label>
                         <input type="text" class="form-control" formControlName="precoTotal"
-                            [(ngModel)]="pedido.precoTotal" placeholder="Preço Total">
+                            [(ngModel)]="pedido.precoTotal" placeholder="Preço Total" disabled="true">
                     </div>
-
-
                 </div>
-
+                <br/><br/>
                 <div class="row">
                     <div class="col-lg-6">
                         <label>Balconista</label>
                         <input type="text" class="form-control" formControlName="usuario"
-                            [(ngModel)]="usuarioLogado.nome" disabled="true"/>
+                            [(ngModel)]="usuarioLogado.nome" disabled="true" />
                     </div>
                 </div>
             </div>
 
+
             <div class="row">
-                <div class="col-lg-6">
-                    <button [disabled]="loading" type="submit" class="btn btn-primary">Salvar</button>
+                <div class="col-lg-1">
+                    <button type="submit" [disabled]="loading" class="btn btn-block btn-primary">Salvar</button>
                     <img *ngIf="loading"
                         src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-danger" (click)="limparFiltros()">Limpar</button>
                 </div>
             </div>
-
         </form>
     </section>
 </mk-box>
