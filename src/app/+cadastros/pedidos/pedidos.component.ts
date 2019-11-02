@@ -68,6 +68,7 @@ export class PedidosComponent implements OnInit {
           this.pedidoForm.controls['usuario'].setValue(pedidoRetornado.usuario.id);
         })
     }
+    
 }
 
 
@@ -75,9 +76,9 @@ export class PedidosComponent implements OnInit {
     return this.pedidoForm.controls;
   }
 
-  produtoSelecionado(val : any) {
-    console.log(val);
-    this.pedidoForm.controls['valor'].setValue(val);
+  produtoSelecionado(produto: any) {
+    console.log(produto);
+    this.pedidoForm.controls['valor'].setValue(produto.valor);
   }  
   
   calcularPrecoTotal() {
@@ -113,9 +114,7 @@ export class PedidosComponent implements OnInit {
 
       this.pedido.usuario = this.usuarioLogado;
 
-      let produto = this.pedidoForm.controls['produto'].value;
-
-      console.log(JSON.stringify(produto));
+      this.pedido.produto = this.pedidoForm.controls['produto'].value;
       
       this.pedido.precoTotal = this.pedidoForm.controls['precoTotal'].value;
 

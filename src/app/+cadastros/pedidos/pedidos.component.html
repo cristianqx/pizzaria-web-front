@@ -9,7 +9,7 @@
                         <select class="form-control select2 select2-hidden-accessible" formControlName="produto"
                             [(ngModel)]="empSelected" (ngModelChange)="produtoSelecionado($event)" style="width: 100%;"
                             tabindex="-1" aria-hidden="true">
-                            <option *ngFor="let produtos of produto | async" [value]="produtos.id">
+                            <option *ngFor="let produtos of produto | async" [ngValue]="produtos">
                                 {{produtos.nomeProduto}}</option>
                         </select>
                     </div>
