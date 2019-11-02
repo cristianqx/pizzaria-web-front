@@ -36,6 +36,7 @@ export class PedidosComponent implements OnInit {
               private authService: AuthenticationService,
               private produtoService: ProdutoService) { 
                 this.usuarioLogado = this.authService.currentUserValue;
+
                 console.clear();
   }
 
@@ -43,8 +44,6 @@ export class PedidosComponent implements OnInit {
   ngOnInit() {
     this.usuarioLogado = this.authService.currentUserValue;
     this.produto = this.produtoService.obterProdutos();
-
-
 
     this.pedidoForm = this.formBuilder.group({
       quantidade:  ['', [Validators.required]],
@@ -62,7 +61,7 @@ export class PedidosComponent implements OnInit {
       this.pedidoService.obterPedido(this.idPedidoEdicao).subscribe(
         pedidoRetornado => {
           this.pedidoForm.controls['quantidade'].setValue(pedidoRetornado.quantidade);
-          this.pedidoForm.controls['produto'].setValue(pedidoRetornado.produto.valor);
+          this.pedidoForm.controls['produto'].setValue(pedidoRetornado.produto);
           this.pedidoForm.controls['precoTotal'].setValue(pedidoRetornado.precoTotal);
           this.pedidoForm.controls['observacao'].setValue(pedidoRetornado.observacao);
           this.pedidoForm.controls['tipoStatus'].setValue(pedidoRetornado.tipoStatus.id);
@@ -87,25 +86,20 @@ export class PedidosComponent implements OnInit {
     let total;
 
     total = (quantidade * valorUnitario);
-    if(total != 'undefined' || null) {
+
+    if(total != 'undefined') {
       this.pedidoForm.controls['precoTotal'].setValue(total);
       this.pedidoForm.controls['quantidade'].setValue(quantidade);
       this.pedidoForm.controls['valor'].setValue(valorUnitario);
+
     } else {
       alert("Ops! Ocorreu um erro");
     }
-    console.log(total);
-
+    console.log("Valor total: "+total);
   }
 
   limparFiltros() {
-         /* this.pedidoForm.controls['quantidade'].setValue(null);
-          this.pedidoForm.controls['produto'].setValue(null);
-          this.pedidoForm.controls['precoTotal'].setValue(null);
-          this.pedidoForm.controls['observacao'].setValue(null);
-          this.pedidoForm.controls['tipoStatus'].setValue(null);
-          this.pedidoForm.controls['usuario'].setValue(null);*/
-          this.ngOnInit();
+    this.ngOnInit();
   }
 
   manterPedido() {
@@ -117,9 +111,13 @@ export class PedidosComponent implements OnInit {
 
       this.pedido.tipoStatus.id = 1;
 
-      this.pedido.produto = this.pedidoForm.controls['produto'].value;
+      this.pedido.usuario = this.usuarioLogado;
+
+      let produto = this.pedidoForm.controls['produto'].value;
+
+      console.log(JSON.stringify(produto));
       
-      this.pedidoForm.controls['produto'].setValue(this.pedido.produto);
+      this.pedido.precoTotal = this.pedidoForm.controls['precoTotal'].value;
 
       this.pedidoForm.controls['tipoStatus'].setValue(this.pedido.tipoStatus.id);
 
