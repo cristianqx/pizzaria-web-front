@@ -20,7 +20,6 @@ export class ListaPedidosComponent implements OnInit {
 
   ngOnInit() {
     this.obterPedidos();
-    console.log(JSON.stringify(this.pedidos));
   }
 
   obterPedidos() {
@@ -28,6 +27,8 @@ export class ListaPedidosComponent implements OnInit {
   }
 
   editarPedido(idPedido: number) {
+
+    //-->  FALTA IMPLEMENTAR REGRA PARA BLOQUEAR EDICAO CASO O STATUS SEJA DIFERENTE DE 1.
     this.router.navigate(['cadastros/pedidos'], { queryParams: { idPed: idPedido } });
     return false;
   }

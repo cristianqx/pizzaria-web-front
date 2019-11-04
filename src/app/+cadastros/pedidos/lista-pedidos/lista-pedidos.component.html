@@ -23,7 +23,7 @@
                 <div class="col-sm-6"></div>
               </div>
               <div class="panel panel-primary">
-                <div class="panel-heading">Últimos pedidos</div>
+                <div class="panel-heading">Pedidos</div>
 
                 <div class="panel-body">
                   <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
@@ -70,14 +70,10 @@
                         <td class="padrao-fonte-texto">{{pedido.quantidade}} <button type="button" [popover]="myPopover" class="btn" id="btn-ver-mais">Detalhes</button></td>
                         <td class="padrao-fonte-texto">{{pedido.precoTotal | currency:'BRL':true}}</td>
                         <td class="padrao-fonte-texto">
-                          <span class="label label-primary" *ngIf="pedido.tipoStatus.id == 1">
+                          <span class="label label-primary" *ngIf="pedido.tipoStatus.id == 1" style="font-size: 12px;">
                             {{pedido.tipoStatus.descricao}}</span>
-                        </td>
-                        <td class="padrao-fonte-texto" *ngIf="pedido.tipoStatus.id == 2">
-                          <span class="label label-success">{{pedido.tipoStatus.descricao}}</span>
-                        </td>
-                        <td class="padrao-fonte-texto" *ngIf="pedido.tipoStatus.id == 3">
-                          <span class="label label-danger">{{pedido.tipoStatus.descricao}}</span>
+                            <span class="label label-success" *ngIf="pedido.tipoStatus.id == 2" style="font-size: 12px;">{{pedido.tipoStatus.descricao}}</span>
+                            <span class="label label-danger"  *ngIf="pedido.tipoStatus.id == 3" style="font-size: 12px;">{{pedido.tipoStatus.descricao}}</span>
                         </td>
                         <td>
                           <popover-content #obs title="Observações" placement="left" [animation]="true"
@@ -88,8 +84,8 @@
                         </td>
                         <td class="padrao-fonte-texto">{{pedido.usuario.nome}}</td>
                         <td>
-                          <button type="button" class="btn btn-warning" (click)="editarPedido(pedido.id)">Editar
-                            Pedido</button>
+                          <button type="button" class="btn" (click)="editarPedido(pedido.id)">Editar
+                              Pedido</button>
                         </td>
                         <td>
                           <button type="button" class="btn btn-danger" (click)="excluirProduto(produto)">Deletar
