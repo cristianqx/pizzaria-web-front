@@ -24,6 +24,7 @@
               </div>
               <div class="panel panel-primary">
                 <div class="panel-heading">Últimos pedidos</div>
+
                 <div class="panel-body">
                   <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
                     aria-describedby="example2_info">
@@ -34,7 +35,7 @@
                           Pedido</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                           aria-label="Platform(s): activate to sort column ascending" class="padrao-texto-titulo">
-                          Horário do Registro</th>
+                          Data e Horário do Registro</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                           aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
                           Quantidade de Produtos</th>
@@ -58,8 +59,9 @@
                           Excluir Pedido</th>
                     </thead>
 
+
                     <tbody>
- 
+
                       <tr role="row" class="odd" *ngFor="let pedido of pedidos | async">
 
                         <td class="padrao-fonte-texto">{{pedido.id}}</td>
@@ -67,26 +69,38 @@
                         <td class="padrao-fonte-texto">{{pedido.quantidade}} <button [popover]="myPopover"
                             id="btn-ver-mais">Detalhes +</button></td>
                         <td class="padrao-fonte-texto">{{pedido.precoTotal | currency:'BRL':true}}</td>
-                        <td class="padrao-fonte-texto" style="color: blue;" *ngIf="pedido.tipoStatus.id == 1">
-                          {{pedido.tipoStatus.descricao}}</td>
-                        <td class="padrao-fonte-texto" style="color: green;" *ngIf="pedido.tipoStatus.id == 2">
-                          {{pedido.tipoStatus.descricao}}</td>
-                        <td class="padrao-fonte-texto" style="color: red;" *ngIf="pedido.tipoStatus.id == 3">
-                          {{pedido.tipoStatus.descricao}}</td>
-                        <td class="padrao-fonte-texto">{{pedido.observacao}}</td>
+                        <td class="padrao-fonte-texto">
+                          <span class="label label-primary" *ngIf="pedido.tipoStatus.id == 1">
+                            {{pedido.tipoStatus.descricao}}</span>
+                        </td>
+                        <td class="padrao-fonte-texto" *ngIf="pedido.tipoStatus.id == 2">
+                          <span class="label label-success">{{pedido.tipoStatus.descricao}}</span>
+                        </td>
+                        <td class="padrao-fonte-texto" *ngIf="pedido.tipoStatus.id == 3">
+                          <span class="label label-danger">{{pedido.tipoStatus.descricao}}</span>
+                        </td>
+                        <td>
+                          <popover-content #obs title="Observação" placement="left" [animation]="true"
+                            [closeOnClickOutside]="true">
+                            <b>{{pedido.observacao}}</b> 
+                          </popover-content>
+
+                          <button type="button"[popover]="obs" id="btn-ver-observacao">Observação</button>
+                        </td>
                         <td class="padrao-fonte-texto">{{pedido.usuario.nome}}</td>
                         <td>
-                          <button type="button" id="btn-radius-editar" class="btn btn-secondary btn-sm"
-                            id="btn-editar-pedido" (click)="editar(produto)">Editar Pedido</button>
+                          <button type="button" class="btn btn-warning" (click)="editarPedido(pedido.id)">Editar
+                            Pedido</button>
                         </td>
                         <td>
-                          <button type="button" id="btn-radius-excluir" id="btn-excluir"
-                            (click)="excluirProduto(produto)">Deletar Pedido</button>
+                          <button type="button" class="btn btn-danger" (click)="excluirProduto(produto)">Deletar
+                            Pedido</button>
                         </td>
                         <popover-content #myPopover title="Detalhes do Produto" placement="Right" [animation]="true"
-                        [closeOnClickOutside]="true">
-                        <span style="color: #ee0000"> {{pedido.quantidade}} <b>Und</b> - {{pedido.produto.nomeProduto}} - {{pedido.produto.tipoPizza.descricao}}<br/></span>
-                      </popover-content>
+                          [closeOnClickOutside]="true">
+                          <span style="color: #ee0000"> {{pedido.quantidade}} <b>Und</b> -
+                            {{pedido.produto.nomeProduto}} - {{pedido.produto.tipoPizza.descricao}}<br /></span>
+                        </popover-content>
                       </tr>
 
                     </tbody>

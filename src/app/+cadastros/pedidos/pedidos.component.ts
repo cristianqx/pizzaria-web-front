@@ -65,7 +65,7 @@ export class PedidosComponent implements OnInit {
           this.pedidoForm.controls['precoTotal'].setValue(pedidoRetornado.precoTotal);
           this.pedidoForm.controls['observacao'].setValue(pedidoRetornado.observacao);
           this.pedidoForm.controls['tipoStatus'].setValue(pedidoRetornado.tipoStatus.id);
-          this.pedidoForm.controls['usuario'].setValue(pedidoRetornado.usuario.id);
+          this.pedidoForm.controls['usuario'].setValue(pedidoRetornado.usuario.nome);
         })
     }
     

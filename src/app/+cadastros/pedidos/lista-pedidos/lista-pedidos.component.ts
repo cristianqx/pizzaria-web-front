@@ -20,10 +20,16 @@ export class ListaPedidosComponent implements OnInit {
 
   ngOnInit() {
     this.obterPedidos();
+    console.log(JSON.stringify(this.pedidos));
   }
 
   obterPedidos() {
     this.pedidos = this.pedidoService.listarPedidos();
+  }
+
+  editarPedido(idPedido: number) {
+    this.router.navigate(['cadastros/pedidos'], { queryParams: { idPed: idPedido } });
+    return false;
   }
 
 }

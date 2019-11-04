@@ -38,7 +38,7 @@ export class CadastroProdutosComponent implements OnInit {
 
   excluirProduto(produto: ProdutoResource): void {
 
-    if (confirm('Deseja excluir o operador: ' + produto.nomeProduto + '?')) {
+    if (confirm('Deseja excluir o produto: ' + produto.nomeProduto + '?')) {
       this.produtoService.deletarProduto(produto.id)
         .subscribe(data => {
           this.produto = this.produto.filter(u => u !== produto);
