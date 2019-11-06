@@ -26,7 +26,6 @@ export class PedidosComponent implements OnInit {
 
   idPedidoEdicao : number;
   filteredArray: any[] = [];
-  teste: any;
   empSelected : any;
 
   constructor(private pedidoService : PedidoService,
@@ -60,18 +59,18 @@ export class PedidosComponent implements OnInit {
     if(this.idPedidoEdicao != undefined) {
       this.pedidoService.obterPedido(this.idPedidoEdicao).subscribe(
         pedidoRetornado => {
+          console.log(JSON.stringify(pedidoRetornado.produto.nomeProduto));
+          console.log( "Antes: "+this.pedidoForm.controls['produto'].value);
           this.pedidoForm.controls['quantidade'].setValue(pedidoRetornado.quantidade);
-          this.pedidoForm.controls['produto'].setValue(pedidoRetornado.produto);
+          this.pedidoForm.controls['produto'].setValue(pedidoRetornado.produto.nomeProduto);
           this.pedidoForm.controls['precoTotal'].setValue(pedidoRetornado.precoTotal);
           this.pedidoForm.controls['observacao'].setValue(pedidoRetornado.observacao);
           this.pedidoForm.controls['tipoStatus'].setValue(pedidoRetornado.tipoStatus.id);
           this.pedidoForm.controls['usuario'].setValue(pedidoRetornado.usuario.nome);
+          console.log( "Dps: "+this.pedidoForm.controls['produto'].value);
         })
     }
-    
 }
-
-
   get formControls() {
     return this.pedidoForm.controls;
   }

@@ -22,6 +22,16 @@
                 </div>
 
                 <div class="row">
+                        <div class="col-lg-6"> <label>asdasd</label>
+                          <select class="form-control select2 select2-hidden-accessible" formControlName="produto"
+                            [(ngModel)]="pedido.produto.id" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <option *ngFor="let produtos of produto | async" [value]="produtos">{{produtos.nomeProduto}}
+                            </option>
+                          </select>
+                        </div>
+                </div>
+
+                <div class="row">
                     <div class="col-lg-6">
                         <label for="inputPedido">Quantidade</label>
                         <input type="text" id="qtdUn" class="form-control" formControlName="quantidade"

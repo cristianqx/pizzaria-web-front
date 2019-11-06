@@ -126,33 +126,59 @@
         </div>
       </div>
 
-
-
-      
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     </div>
   </section>
 
 </ng-container>
 
-<!-- DASHBOARD FINANCEIRO -->
 <ng-container *ngIf="dashboardBalconista">
 
   <section class="content">
-    <div class="row">
-      <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-aqua">
-          <div class="inner">
-            <h3>R$ 1.675.892</h3>
-            <p>Movimento do Mês Atual</p>
+      <div class="row">
+          <div class="col-lg-3 col-xs-6">
+    
+            <div class="small-box bg-aqua">
+              <div class="inner">
+                <h3>15</h3>
+    
+                <p>Pedidos em Aberto</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pizza"></i>
+              </div>
+              <div class="small-box-footer" (click)=" listarPedidosByStatus(1)" >Mais informações <i class="fa fa-arrow-circle-right"></i></div>
+            </div>
           </div>
-          <div class="icon">
-            <i class="ion ion-person-add"></i>
+    
+          <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-green">
+              <div class="inner">
+                <h3>8</h3>
+    
+                <p>Pedidos em Preparação</p>
+              </div>
+              <div class="icon">
+                <i class="icon icon ion-happy-outline"></i>
+              </div>
+              <div class="small-box-footer" (click)=" listarPedidosByStatus(2)">Mais informações <i class="fa fa-arrow-circle-right"></i></div>
+            </div>
           </div>
-          <a href="#" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+    
+          <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-red">
+              <div class="inner">
+                <h3>5</h3>
+    
+                <p>Pedidos Finalizados</p>
+              </div>
+              <div class="icon">
+                <i class="icon ion-checkmark"></i>
+              </div>
+              <div class="small-box-footer" (click)=" listarPedidosByStatus(3)">Mais informações<i class="fa fa-arrow-circle-right"></i></div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
   </section>
 
 </ng-container>

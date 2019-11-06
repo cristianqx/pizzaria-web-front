@@ -36,3 +36,5 @@ export const ENDPOINT_INSERIR_PEDIDO = PREFIX_SERVICE_HOST + '/pedido/inserir-pe
 export const ENDPOINT_LISTAR_PEDIDOS = PREFIX_SERVICE_HOST + '/pedido/listar-pedidos';
 /** Endpoint do servico para retornar pedido pelo id */
 export const ENDPOINT_BUSCAR_PEDIDO = PREFIX_SERVICE_HOST + '/pedido/get/'
+/** Endpoint do servico para retornar lista por status do pedido */
+export const ENDPOINT_LISTAR_PEDIDOS_STATUS = PREFIX_SERVICE_HOST + '/pedido/lista-pedidos-status/'

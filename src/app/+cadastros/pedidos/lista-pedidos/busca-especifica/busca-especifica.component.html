@@ -1,0 +1,102 @@
+<mk-box header="Listagem de produtos" [isCollapsable]="false" [isRemovable]="false">
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <!-- /.box-header -->
+          <div class="box-body">
+            <br />
+            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+              <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6"></div>
+              </div>
+              <div class="panel panel-primary">
+                <div class="panel-heading">Pedidos</div>
+
+                <div class="panel-body">
+                  <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                    aria-describedby="example2_info">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Browser: activate to sort column ascending" class="padrao-texto-titulo">Número do
+                          Pedido</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Platform(s): activate to sort column ascending" class="padrao-texto-titulo">
+                         Registro</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Qtd de Produtos</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Preço Total</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Status do Pedido</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Observação</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Balconista</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Editar Pedido</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                          aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
+                          Excluir Pedido</th>
+                    </thead>
+
+
+                    <tbody>
+
+                      <tr role="row" class="odd" *ngFor="let pedido of pedidos | async">
+
+                        <td class="padrao-fonte-texto">{{pedido.id}}</td>
+                        <td class="padrao-fonte-texto"><span class="label label-danger" style="font-size: 12px;">{{pedido.dataInicio | date:'dd/MM/yyyy HH:mm:ss' }}</span></td>
+
+                        <td class="padrao-fonte-texto">{{pedido.quantidade}} <button type="button" [popover]="myPopover" class="btn" id="btn-ver-mais">Detalhes</button></td>
+                        <td class="padrao-fonte-texto">{{pedido.precoTotal | currency:'BRL':true}}</td>
+                        <td class="padrao-fonte-texto">
+                          <span class="label label-primary" *ngIf="pedido.tipoStatus.id == 1" style="font-size: 12px;">
+                            {{pedido.tipoStatus.descricao}}</span>
+                            <span class="label label-success" *ngIf="pedido.tipoStatus.id == 2" style="font-size: 12px;">{{pedido.tipoStatus.descricao}}</span>
+                            <span class="label label-danger"  *ngIf="pedido.tipoStatus.id == 3" style="font-size: 12px;">{{pedido.tipoStatus.descricao}}</span>
+                        </td>
+                        <td>
+                          <popover-content #obs title="Observações" placement="left" [animation]="true"
+                            [closeOnClickOutside]="true">
+                            <b>{{pedido.observacao}}</b> 
+                          </popover-content>
+                          <button type="button" [popover]="obs" class="btn" id="btn-ver-observacao">Detalhes</button>
+                        </td>
+                        <td class="padrao-fonte-texto">{{pedido.usuario.nome}}</td>
+                        <td>
+                          <button type="button" class="btn" (click)="editarPedido(pedido.id)" [disabled]="verificaStatus == true">Editar
+                              Pedido</button>
+                        </td>
+                        <td>
+                          <button type="button" class="btn btn-danger" (click)="excluirProduto(produto)">Deletar
+                            Pedido</button>
+                        </td>
+                        <popover-content #myPopover title="Detalhes do Produto" placement="Right" [animation]="true"
+                          [closeOnClickOutside]="true">
+                          <span style="color: #ee0000"> {{pedido.quantidade}} <b>Und</b> -
+                            {{pedido.produto.nomeProduto}} - {{pedido.produto.tipoPizza.descricao}}<br /></span>
+                        </popover-content>
+                      </tr>
+
+                    </tbody>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+    </div>
+  </section>
+</mk-box>

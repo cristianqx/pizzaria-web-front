@@ -24,9 +24,10 @@ const routes: Routes = [
             title: 'Produtos'}},
           {path: 'lista-pedidos',loadChildren: './+cadastros/pedidos/lista-pedidos/lista-pedidos.module#ListaPedidosModule',data: {
             title: 'Lista de Pedidos'}},
+          {path: 'busca-especifica',loadChildren: './+cadastros/pedidos/lista-pedidos/busca-especifica/busca-especifica.module#BuscaEspecificaModule',data: {
+            title: 'Listagem de Produtos'}},
         ]
       },   
-
 
       {path: 'layout', data: {title: 'Cadastros'},
           children: [
