@@ -27,11 +27,24 @@ export class ListaPedidosComponent implements OnInit {
     this.pedidos = this.pedidoService.listarPedidos();
   }
 
-  editarPedido(idPedido: number) {
-
-    //-->  FALTA IMPLEMENTAR REGRA PARA BLOQUEAR EDICAO CASO O STATUS SEJA DIFERENTE DE 1.
+  editarPedido(idPedido : number) {
     this.router.navigate(['cadastros/pedidos'], { queryParams: { idPed: idPedido } });
     return false;
-
   }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
+  excluirPedido(pedido : PedidoResource): void  {
+    if(confirm('Dejeja excluir o pedido: ' + pedido.id + '?')){
+      this.pedidoService.deletarPedido(pedido.id)
+        .subscribe(data => {
+          this.pedido = this.pedido.filter(p => p !== pedido);
+        })
+     };
+
+     this.refresh();
+  }
+ 
 }
