@@ -80,10 +80,8 @@ export class UsuariosComponent {
 
     this.usuario.id = this.idUsuarioEdicao;
     this.usuarioService.manterUsuario(this.usuario);
-   // this.usuarioLogado.setValue(this.usuario.nome);
-
+    
     setTimeout(() => {
-
       this.loading = false;
       this.isSubmited = false;
       this.router.navigate(['cadastros/listar-usuarios', { "refresh": (new Date().getTime()) }]);

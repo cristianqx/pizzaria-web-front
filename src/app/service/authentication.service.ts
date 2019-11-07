@@ -14,7 +14,7 @@ import { PIZZAIOLO_MENU } from '../security/profiles/pizzaiolo-profile';
 /**
  * Service para controle de autenticacao no portal.
  * 
- * @author Andre Dornelas
+ * @author Cristian
  */
 @Injectable({
   providedIn: 'root'

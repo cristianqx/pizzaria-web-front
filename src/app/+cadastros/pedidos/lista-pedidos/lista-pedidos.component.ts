@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { PedidoResource } from 'src/app/model/pedido-resource';
 import { PedidoService } from 'src/app/service/pedido.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
   selector: 'app-lista-pedidos',

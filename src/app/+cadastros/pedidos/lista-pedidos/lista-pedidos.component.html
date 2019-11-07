@@ -35,7 +35,10 @@
                           Pedido</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                           aria-label="Platform(s): activate to sort column ascending" class="padrao-texto-titulo">
-                         Registro</th>
+                         Inicio</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                         aria-label="Platform(s): activate to sort column ascending" class="padrao-texto-titulo">
+                        Fim</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                           aria-label="Engine version: activate to sort column ascending" class="padrao-texto-titulo">
                           Qtd de Produtos</th>
@@ -66,7 +69,7 @@
 
                         <td class="padrao-fonte-texto">{{pedido.id}}</td>
                         <td class="padrao-fonte-texto"><span class="label label-danger" style="font-size: 12px;">{{pedido.dataInicio | date:'dd/MM/yyyy HH:mm:ss' }}</span></td>
-
+                        <td class="padrao-fonte-texto"><span class="label label-danger" style="font-size: 12px;">{{pedido.dataFim | date:'dd/MM/yyyy HH:mm:ss' }}</span></td>
                         <td class="padrao-fonte-texto">{{pedido.quantidade}} <button type="button" [popover]="myPopover" class="btn" id="btn-ver-mais">Detalhes</button></td>
                         <td class="padrao-fonte-texto">{{pedido.precoTotal | currency:'BRL':true}}</td>
                         <td class="padrao-fonte-texto">
