@@ -23,5 +23,9 @@ export class HeaderInnerComponent implements OnInit{
   public logout(){
     this.router.navigateByUrl('/sair', {skipLocationChange: true});
   }
+  
+  public meusDadosPage() {
+    this.router.navigate(['/meus-dados']);
+  }
 
 }

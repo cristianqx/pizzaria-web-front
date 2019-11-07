@@ -29,11 +29,19 @@ const routes: Routes = [
         ]
       },   
 
+      {path: '', data: {title: 'Dados'},
+      children: [
+      {path: 'meus-dados',loadChildren: './meus-dados/meus-dados.module#MeusDadosModule',data: {
+        title: 'Meus Dados'}},
+
+      ]},
+
       {path: 'layout', data: {title: 'Cadastros'},
           children: [
             {path: 'configuration',loadChildren: './+layout/configuration/configuration.module#ConfigurationModule',data: {
                 title: 'Usuários'}},
           ]
+          
       },
       
       {path: 'dropdown',loadChildren: './+dropdown/dropdown.module#DropdownModule',data: {

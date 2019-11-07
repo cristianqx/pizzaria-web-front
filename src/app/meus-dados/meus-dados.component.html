@@ -1,0 +1,73 @@
+<mk-box header="Cadastro de Usuarios" [isCollapsable]="false" [isRemovable]="false">
+    <section class="content">
+    <form role="form" [formGroup]="usuarioForm" (ngSubmit)="manterUsuario()">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <label for="inputLogin">Login</label>
+              <input type="login" class="form-control"
+                [ngClass]="{ 'is-invalid' : isSubmited && formControls.email.error }" formControlName="login" 
+                  [(ngModel)]="usuario.login" placeholder="login" autofocus>
+            </div>
+  
+            <div class="row">
+                <div class="col-lg-6">
+                <label for="exampleInputPassword1">Senha</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha"
+                    [type]="isTextFieldType ? 'text' : 'password'"
+                    placeholder="Enter your password" formControlName="senha" [(ngModel)]="usuario.senha">
+                    <span class="input-group-addon" (click)="togglePasswordFieldType()"><i class="material-icons">
+                        <img src="../../assets/icon/baseline_visibility_black_18dp.png" height="10px" width="12px"></i>
+                    </span>
+                </div>     
+                </div>  
+                </div>     
+          </div>
+  
+          <div class="row">
+            <div class="col-lg-6">
+              <label>Nome</label>
+              <input type="text" class="form-control" formControlName="nome" [(ngModel)]="usuario.nome"
+                placeholder="Nome" >
+            </div>
+  
+            <div class="col-lg-6">
+              <label>Perfil</label>
+              <select class="form-control" style="width: 100%;" formControlName="perfil" [(ngModel)]="usuario.perfil.id"
+                [disabled]="verificaPerfil"> 
+  
+                <option value="1">Gerente</option>
+                <option value="2">Balconista</option>
+                <option value="3">Pizzaiolo</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-lg-6">
+              <label>Email</label>
+              <input type="text" class="form-control" formControlName="email" [(ngModel)]="usuario.email"
+                placeholder="Email" />
+            </div>
+            <div class="col-lg-6">
+              <label>Sexo</label>
+              <select class="form-control" style="width: 100%;" formControlName="sexo" [(ngModel)]="usuario.sexo">
+  
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+              </select>
+            </div>
+          </div>
+  
+        </div>
+ 
+        <div class="row">
+            <div class="col-lg-6">
+              <button [disabled]="loading" type="submit" class="btn btn-primary">Salvar</button>
+              <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />        </div>
+          </div>
+
+      </form>
+    </section>
+  </mk-box>
