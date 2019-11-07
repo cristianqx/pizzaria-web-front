@@ -13,7 +13,8 @@ export class ListaPedidosComponent implements OnInit {
 
   pedidos: Observable<PedidoResource[]>
   pedido: PedidoResource[];
-  idPedidoEdicao: any;
+  loading: boolean;
+  isSubmited: boolean;
 
 
   constructor(private pedidoService: PedidoService,
@@ -37,14 +38,21 @@ export class ListaPedidosComponent implements OnInit {
   }
 
   excluirPedido(pedido : PedidoResource): void  {
-    if(confirm('Dejeja excluir o pedido: ' + pedido.id + '?')){
+    this.loading = true;
+    this.isSubmited = true;
+
+   if(confirm('Dejeja excluir o pedido: ' + pedido.id + '?')){
       this.pedidoService.deletarPedido(pedido.id)
         .subscribe(data => {
           this.pedido = this.pedido.filter(p => p !== pedido);
         })
      };
 
-     this.refresh();
+     setTimeout(() => {
+      this.loading = false;
+      this.isSubmited = false;
+      this.refresh();
+    }, 700);
   }
  
 }

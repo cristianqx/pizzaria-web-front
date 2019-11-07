@@ -40,3 +40,5 @@ export const ENDPOINT_EXCLUIR_PEDIDO = PREFIX_SERVICE_HOST + '/pedido/deletar-pe
 export const ENDPOINT_BUSCAR_PEDIDO = PREFIX_SERVICE_HOST + '/pedido/get/'
 /** Endpoint do servico para retornar lista por status do pedido */
 export const ENDPOINT_LISTAR_PEDIDOS_STATUS = PREFIX_SERVICE_HOST + '/pedido/lista-pedidos-status/'
+/** Endpoint do servico para retornar quantidade de pedidos em aberto, andamento ou finalizado */
+export const ENDPOINT_LISTAR_QTD_PEDIDOS = PREFIX_SERVICE_HOST + '/pedido/contar-pedidos/'

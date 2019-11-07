@@ -15,6 +15,8 @@ export class CadastroProdutosComponent implements OnInit {
   
   produtos : Observable<ProdutoResource[]>
   produto : ProdutoResource[];
+  loading: boolean;
+  isSubmited: boolean;
 
   constructor(private produtoService : ProdutoService,
               private router : Router) {}
@@ -38,6 +40,9 @@ export class CadastroProdutosComponent implements OnInit {
 
   excluirProduto(produto: ProdutoResource): void {
 
+    this.loading = true;
+    this.isSubmited = true;
+
     if (confirm('Deseja excluir o produto: ' + produto.nomeProduto + '?')) {
       this.produtoService.deletarProduto(produto.id)
         .subscribe(data => {
@@ -45,7 +50,12 @@ export class CadastroProdutosComponent implements OnInit {
         })
     };
 
-    this.refresh();
+    setTimeout(() => {
+      this.loading = false;
+      this.isSubmited = false;
+      this.refresh();
+    }, 700);
+    
   }
   
 }

@@ -15,16 +15,21 @@ export class BuscaEspecificaComponent implements OnInit {
 
   pedidos : Observable<PedidoResource[]>
   pedido: PedidoResource[];
+  pedidoRetorno : Observable<PedidoResource[]>
   idStatusPedido : number;
   verificaStatus = true;
+  loading: boolean;
+  isSubmited: boolean;
   constructor(private pedidoService : PedidoService,
     private router: Router,
     private route : ActivatedRoute) { }
 
   ngOnInit() {
 
-    this.idStatusPedido = this.route.snapshot.queryParams['idPed'];
+    this.obterListaPedidos();
+    this.idStatusPedido = this.route.snapshot.queryParams['idStatusPed'];
     this.obterPedidos(this.idStatusPedido);
+ 
 
     if(this.idStatusPedido != 1) {
       this.verificaStatus = true;
@@ -33,14 +38,41 @@ export class BuscaEspecificaComponent implements OnInit {
     }
   }
 
+  obterListaPedidos() {
+    this.pedidoRetorno = this.pedidoService.listarPedidos();
+  }
+
+
   obterPedidos(idTipoPedido) {
     this.pedidos = this.pedidoService.obterPedidosByStatus(idTipoPedido);
   }
 
   editarPedido(idPedido: number) {
-
-    //-->  FALTA IMPLEMENTAR REGRA PARA BLOQUEAR EDICAO CASO O STATUS SEJA DIFERENTE DE 1.
     this.router.navigate(['cadastros/pedidos'], { queryParams: { idPed: idPedido } });
     return false;
+  }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
+  excluirPedido(pedido : PedidoResource): void  {
+    this.isSubmited = true;
+    this.loading = true;
+
+    if(confirm('Dejeja excluir o pedido: ' + pedido.id + '?')){
+      this.pedidoService.deletarPedido(pedido.id)
+        .subscribe(data => {
+          this.pedido = this.pedido.filter(p => p !== pedido);
+        })
+     };
+
+     setTimeout(() => {
+      this.loading = false;
+      this.isSubmited = false;
+      this.refresh();
+    }, 700);
+
+
   }
 }

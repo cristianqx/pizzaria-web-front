@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { PedidoResource } from "../model/pedido-resource";
-import { DEFAULT_HTTP_OPTIONS, ENDPOINT_INSERIR_PEDIDO, ENDPOINT_LISTAR_PEDIDOS, ENDPOINT_BUSCAR_PEDIDO, ENDPOINT_LISTAR_PEDIDOS_STATUS, ENDPOINT_EXCLUIR_PEDIDO } from "../endpoint-constants";
+import { DEFAULT_HTTP_OPTIONS, ENDPOINT_INSERIR_PEDIDO, ENDPOINT_LISTAR_PEDIDOS, ENDPOINT_BUSCAR_PEDIDO, ENDPOINT_LISTAR_PEDIDOS_STATUS, ENDPOINT_EXCLUIR_PEDIDO, ENDPOINT_LISTAR_QTD_PEDIDOS } from "../endpoint-constants";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -37,5 +37,9 @@ export class PedidoService {
 
     deletarPedido(id: number){
         return this.http.delete(ENDPOINT_EXCLUIR_PEDIDO + id);
+    }
+
+    obterQtdPedidosPorStatus(idStatusPedido : number) {
+        return this.http.get(ENDPOINT_LISTAR_QTD_PEDIDOS + idStatusPedido);
     }
 }
