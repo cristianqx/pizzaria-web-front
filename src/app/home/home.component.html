@@ -134,8 +134,26 @@
 
 <ng-container *ngIf="dashboardBalconista">
 
+  
   <section class="content">
       <div class="row">
+
+          <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>+</h3>
+    
+                  <p>Cadastro de Pedido</p>
+                </div>
+                <div class="icon">
+                  <i class="ion-plus-circled"></i>
+                </div>
+                <div class="small-box-footer" (click)="cadastrarPedido()">Cadastrar <i class="fa fa-arrow-circle-right"></i></div>
+              </div>
+            </div>
+
+            
           <div class="col-lg-3 col-xs-6">
     
             <div class="small-box bg-aqua">

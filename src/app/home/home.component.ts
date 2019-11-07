@@ -39,5 +39,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
   listarPedidosByStatus(idStatusPedido) {
     this.router.navigate(['/cadastros/busca-especifica'], { queryParams: { idPed: idStatusPedido } });
   }
+
+  cadastrarPedido() {
+    this.router.navigate(['/cadastros/pedidos']);
+  }
   
 }

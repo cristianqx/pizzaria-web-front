@@ -11,12 +11,13 @@ import { Router } from '@angular/router';
 })
 export class ListaPedidosComponent implements OnInit {
 
-  pedidos : Observable<PedidoResource[]>
+  pedidos: Observable<PedidoResource[]>
   pedido: PedidoResource[];
-  
+  idPedidoEdicao: any;
 
-  constructor(private pedidoService : PedidoService,
-              private router: Router) { }
+
+  constructor(private pedidoService: PedidoService,
+    private router: Router) { }
 
   ngOnInit() {
     this.obterPedidos();
@@ -31,6 +32,6 @@ export class ListaPedidosComponent implements OnInit {
     //-->  FALTA IMPLEMENTAR REGRA PARA BLOQUEAR EDICAO CASO O STATUS SEJA DIFERENTE DE 1.
     this.router.navigate(['cadastros/pedidos'], { queryParams: { idPed: idPedido } });
     return false;
-  }
 
+  }
 }
