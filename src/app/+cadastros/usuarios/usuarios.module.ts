@@ -6,6 +6,7 @@ import { UsuariosComponent } from './usuarios.component';
 
 import { BoxModule } from 'angular-admin-lte';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     UsuariosRoutingModule,
     BoxModule,
     FormsModule, ReactiveFormsModule,
+    TextMaskModule
   ],
   declarations: [UsuariosComponent]
 })

@@ -13,6 +13,10 @@ export class UsuarioResource {
     data_cadastro : Date;
     email : string;
     perfil : PerfilResource;
+    telefone : number;
+    telefone2 : number;
+    endereco : string;
+	cep : number;
 
     constructor(){
         this.perfil = new PerfilResource();

@@ -19,7 +19,10 @@ export class UsuariosComponent {
   isSubmited = false;
   loading = false;
   public myModel = ''
-  public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+  public telefoneFixoMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+  public celularFixoMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+  public cepMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/,]
+
   idUsuarioEdicao: number;
   usuarioLogado: UsuarioResource;
 
@@ -40,12 +43,17 @@ export class UsuariosComponent {
     this.usuarioLogado = this.authService.currentUserValue;
 
     this.usuarioForm = this.formBuilder.group({
-      login: ['', [Validators.required]],
-      senha: ['', [Validators.required]],
-      nome: ['', [Validators.required]],
-      sexo: ['', [Validators.required]],
+      login: ['', [Validators.required, Validators.minLength(2), 
+        Validators.maxLength(14)]],
+      senha: ['', Validators.required, Validators.maxLength(8)],
+      nome: ['', [Validators.required, Validators.maxLength(14)]],
+      sexo: ['', [Validators.required, Validators.maxLength(1)]],
       email: ['', [Validators.required, Validators.email]],
       perfil: '',
+      telefone : ['', [Validators.required]],
+      telefone2 : '',
+      endereco : ['', [Validators.required]],
+      cep : ['', [Validators.required]],
     });
 
     this.idUsuarioEdicao = this.route.snapshot.queryParams['idUser'];
@@ -60,6 +68,10 @@ export class UsuariosComponent {
           this.usuarioForm.controls['sexo'].setValue(usuarioRetornado.sexo);
           this.usuarioForm.controls['email'].setValue(usuarioRetornado.email);
           this.usuarioForm.controls['perfil'].setValue(usuarioRetornado.perfil.id);
+          this.usuarioForm.controls['telefone'].setValue(usuarioRetornado.telefone);
+          this.usuarioForm.controls['telefone2'].setValue(usuarioRetornado.telefone2);
+          this.usuarioForm.controls['endereco'].setValue(usuarioRetornado.endereco);
+          this.usuarioForm.controls['cep'].setValue(usuarioRetornado.cep);
         })
     }
   }
