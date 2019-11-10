@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ProdutoResource } from "../model/produto-resource";
-import { ENDPOINT_INSERIR_PRODUTO, DEFAULT_HTTP_OPTIONS, ENDPOINT_LISTAR_PRODUTOS, ENDPOINT_BUSCAR_PRODUTO, ENDPOINT_EXCLUIR_PRODUTO } from "../endpoint-constants";
+import { ENDPOINT_INSERIR_PRODUTO, DEFAULT_HTTP_OPTIONS, ENDPOINT_LISTAR_PRODUTOS, ENDPOINT_BUSCAR_PRODUTO, ENDPOINT_EXCLUIR_PRODUTO, ENDPOINT_LISTAR_QTD_PRODUTOS } from "../endpoint-constants";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -34,6 +34,10 @@ export class ProdutoService {
 
     deletarProduto(id:number) {
         return this.http.delete(ENDPOINT_EXCLUIR_PRODUTO + id);
+    }
+
+    contarProdutos() {
+        return this.http.get(ENDPOINT_LISTAR_QTD_PRODUTOS);
     }
     
     tratarErro(error) {

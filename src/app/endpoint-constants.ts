@@ -42,3 +42,7 @@ export const ENDPOINT_BUSCAR_PEDIDO = PREFIX_SERVICE_HOST + '/pedido/get/'
 export const ENDPOINT_LISTAR_PEDIDOS_STATUS = PREFIX_SERVICE_HOST + '/pedido/lista-pedidos-status/'
 /** Endpoint do servico para retornar quantidade de pedidos em aberto, andamento ou finalizado */
 export const ENDPOINT_LISTAR_QTD_PEDIDOS = PREFIX_SERVICE_HOST + '/pedido/contar-pedidos/'
+/** Endpoint do servico para retornar quantidade de usuarios cadastrado no sistema */
+export const ENDPOINT_LISTAR_QTD_USUARIO = PREFIX_SERVICE_HOST + '/usuario/contar-usuarios/'
+/** Endpoint do servico para retornar quantidade de produtos cadastrado no sistema */
+export const ENDPOINT_LISTAR_QTD_PRODUTOS = PREFIX_SERVICE_HOST + '/produto/contar-produtos/'

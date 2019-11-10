@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginResource } from '../model/login-resource';
-import { DEFAULT_HTTP_OPTIONS, ENDPOINT_LOGIN, ENDPOINT_LISTAR_USUARIOS, ENDPOINT_BUSCAR_USUARIO, ENDPOINT_MANTER_USUARIO, ENDPOINT_EXCLUIR_USUARIO } from '../endpoint-constants';
+import { DEFAULT_HTTP_OPTIONS, ENDPOINT_LOGIN, ENDPOINT_LISTAR_USUARIOS, ENDPOINT_BUSCAR_USUARIO, ENDPOINT_MANTER_USUARIO, ENDPOINT_EXCLUIR_USUARIO, ENDPOINT_LISTAR_QTD_USUARIO } from '../endpoint-constants';
 import { Observable } from 'rxjs';
 import { UsuarioResource } from '../model/usuario-resource';
 
@@ -41,6 +41,10 @@ export class UserService {
       }
     );
   }
+
+  contarUsuarios() {
+    return this.http.get(ENDPOINT_LISTAR_QTD_USUARIO);
+}
   tratarErro(error){
 
     if(error.status == 404){
