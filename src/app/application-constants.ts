@@ -6,7 +6,7 @@
 //==========================================================
 
 /** Nome da Empresa */
-export const NOME_EMPRESA = 'Pizzaria';
+export const NOME_EMPRESA = 'Pizzaria Casa Nossa';
 
 /** Site da empresa */
 export const SITE_EMPRESA = 'http://pizzaria.com.br';
