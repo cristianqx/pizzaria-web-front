@@ -77,7 +77,7 @@ export class PedidosComponent implements OnInit {
 
   produtoSelecionado(produto: any) {
     console.log(produto);
-    this.pedidoForm.controls['valor'].setValue(produto.valor);
+    this.pedidoForm.controls['valor'].setValue(Number(produto.valor).toFixed(2));
   }  
   
   calcularPrecoTotal() {
@@ -88,7 +88,7 @@ export class PedidosComponent implements OnInit {
     total = (quantidade * valorUnitario);
 
     if(total != 'undefined') {
-      this.pedidoForm.controls['precoTotal'].setValue(total);
+      this.pedidoForm.controls['precoTotal'].setValue((Number(total).toFixed(2)));
       this.pedidoForm.controls['quantidade'].setValue(quantidade);
       this.pedidoForm.controls['valor'].setValue(valorUnitario);
 

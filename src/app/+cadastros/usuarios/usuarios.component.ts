@@ -45,7 +45,7 @@ export class UsuariosComponent {
     this.usuarioForm = this.formBuilder.group({
       login: ['', [Validators.required, Validators.minLength(2), 
         Validators.maxLength(14)]],
-      senha: ['', Validators.required, Validators.maxLength(8)],
+      senha: ['', Validators.required],
       nome: ['', [Validators.required, Validators.maxLength(14)]],
       sexo: ['', [Validators.required, Validators.maxLength(1)]],
       email: ['', [Validators.required, Validators.email]],

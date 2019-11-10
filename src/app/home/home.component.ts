@@ -17,7 +17,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   public pedidosEmAberto : any;
   public pedidosEmAndamento : any;
-  public pedidosEmFinalizado : any;
+  public pedidosFinalizado : any;
 
   public tipoStatus : any;
   public idStatusPedido;
@@ -71,7 +71,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   listarQtdPedidosFinalizados() {
     this.pedidoService.obterQtdPedidosPorStatus(3).subscribe(retorno => {
-      this.pedidosEmFinalizado = retorno;
+      this.pedidosFinalizado = retorno;
     });
   }
   

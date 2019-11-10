@@ -55,13 +55,12 @@
                         <td>{{usuario.nome}}</td>
                         <td>{{usuario.perfil.descricao}}</td>
                         <td>
-                          <button id="btn-editar" (click)="editarUsuario(usuario.id)">Editar Usuário
-                          </button>
+                          <button type="button" class="btn" (click)="editarUsuario(usuario.id)">Editar
+                              Pedido</button>
                         </td>
                         <td>
-                          <button id="btn-excluir" (click)="excluirUsuario(usuario)">Excluir Usuário
-
-                          </button>
+                          <button type="button" class="btn btn-danger" (click)="excluirUsuario(usuario)">Deletar
+                            Pedido</button>
                         </td>
                       </tr>
                     </tbody>
